@@ -7,7 +7,7 @@ import { startServer } from '../src/server.js';
 const program = new Command();
 
 program
-  .name('api-mockgen')
+  .name('mockify')
   .description('Generate mock API servers from Postman collections or OpenAPI specs')
   .version('1.0.0')
   .argument('<input>', 'Postman collection (.json) or OpenAPI spec (.yaml/.json) file')
@@ -18,7 +18,7 @@ program
   .option('--hot-reload', 'Watch for file changes and restart server', false)
   .action(async (input, options) => {
     try {
-      console.log(chalk.blue('🚀 Starting API Mock Generator...'));
+      console.log(chalk.blue('🚀 Starting Mockify...'));
       console.log(chalk.gray(`Input file: ${input}`));
       console.log(chalk.gray(`Port: ${options.port}`));
       console.log(chalk.gray(`Dynamic responses: ${options.dynamic ? 'Yes' : 'No'}`));

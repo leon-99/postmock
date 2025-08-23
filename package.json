@@ -1,11 +1,11 @@
 {
-  "name": "api-mockgen",
+  "name": "mockify",
   "version": "1.0.0",
   "description": "Generate mock API servers from Postman collections or OpenAPI specs",
   "main": "src/index.js",
   "type": "module",
   "bin": {
-    "api-mockgen": "./bin/cli.js"
+    "mockify": "./bin/cli.js"
   },
   "scripts": {
     "start": "node bin/cli.js",
@@ -19,10 +19,21 @@
     "openapi",
     "swagger",
     "cli",
-    "server"
+    "server",
+    "development",
+    "testing",
+    "prototyping"
   ],
-  "author": "",
+  "author": "leon-99",
   "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/leon-99/mockify.git"
+  },
+  "homepage": "https://github.com/leon-99/mockify#readme",
+  "bugs": {
+    "url": "https://github.com/leon-99/mockify/issues"
+  },
   "dependencies": {
     "commander": "^11.1.0",
     "express": "^4.18.2",
@@ -37,5 +48,14 @@
   },
   "engines": {
     "node": ">=18.0.0"
+  },
+  "files": [
+    "bin/",
+    "src/",
+    "README.md",
+    "LICENSE"
+  ],
+  "publishConfig": {
+    "access": "public"
   }
 }
