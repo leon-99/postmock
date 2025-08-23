@@ -48,7 +48,7 @@ export async function startServer(inputFile, options) {
           
           // Set appropriate headers
           res.setHeader('Content-Type', 'application/json');
-                      res.setHeader('X-Mock-Server', 'mockify');
+                      res.setHeader('X-Mock-Server', 'postmock');
           
           res.json(response);
           
@@ -69,7 +69,7 @@ export async function startServer(inputFile, options) {
     app.get('/_health', (req, res) => {
       res.json({ 
         status: 'ok', 
-        service: 'mockify',
+        service: 'postmock',
         endpoints: apiSpec.endpoints.length,
         timestamp: new Date().toISOString()
       });

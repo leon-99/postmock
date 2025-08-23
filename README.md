@@ -1,19 +1,19 @@
-# Mockify
+# PostMock
 
 > **Instant Mock API Server Generator** - Create mock servers from Postman collections or OpenAPI specs in seconds!
 
-[![npm version](https://img.shields.io/npm/v/mockify.svg?style=flat-square)](https://www.npmjs.com/package/mockify)
-[![npm downloads](https://img.shields.io/npm/dm/mockify.svg?style=flat-square)](https://www.npmjs.com/package/mockify)
-[![GitHub stars](https://img.shields.io/github/stars/leon-99/mockify.svg?style=flat-square)](https://github.com/leon-99/mockify)
-[![GitHub license](https://img.shields.io/github/license/leon-99/mockify.svg?style=flat-square)](https://github.com/leon-99/mockify/blob/main/LICENSE)
-[![Node.js version](https://img.shields.io/node/v/mockify.svg?style=flat-square)](https://nodejs.org/)
-[![GitHub issues](https://img.shields.io/github/issues/leon-99/mockify.svg?style=flat-square)](https://github.com/leon-99/mockify/issues)
+[![npm version](https://img.shields.io/npm/v/postmock.svg?style=flat-square)](https://www.npmjs.com/package/postmock)
+[![npm downloads](https://img.shields.io/npm/dm/postmock.svg?style=flat-square)](https://www.npmjs.com/package/postmock)
+[![GitHub stars](https://img.shields.io/github/stars/leon-99/postmock.svg?style=flat-square)](https://github.com/leon-99/postmock)
+[![GitHub license](https://img.shields.io/github/license/leon-99/postmock.svg?style=flat-square)](https://github.com/leon-99/postmock/blob/main/LICENSE)
+[![Node.js version](https://img.shields.io/node/v/postmock.svg?style=flat-square)](https://nodejs.org/)
+[![GitHub issues](https://img.shields.io/github/issues/leon-99/postmock.svg?style=flat-square)](https://github.com/leon-99/postmock/issues)
 
-[![GitHub](https://img.shields.io/badge/GitHub-leon--99%2Fmockify-blue?style=flat-square&logo=github)](https://github.com/leon-99/mockify)
+[![GitHub](https://img.shields.io/badge/GitHub-leon--99%2Fpostmock-blue?style=flat-square&logo=github)](https://github.com/leon-99/postmock)
 
 ---
 
-**Mockify** is a powerful CLI tool that instantly generates mock API servers from your existing Postman collections or OpenAPI specifications. Perfect for frontend development, testing, and prototyping when you need a working API server without waiting for backend implementation.
+**PostMock** is a powerful CLI tool that instantly generates mock API servers from your existing Postman collections or OpenAPI specifications. Perfect for frontend development, testing, and prototyping when you need a working API server without waiting for backend implementation.
 
 ## ✨ Features
 
@@ -32,23 +32,23 @@
 ### Installation
 
 ```bash
-npm install -g mockify
+npm install -g postmock
 ```
 
 ### Basic Usage
 
 ```bash
 # From a Postman collection
-mockify collection.json
+postmock collection.json
 
 # From an OpenAPI spec
-mockify swagger.yaml
+postmock swagger.yaml
 
 # With custom port
-mockify collection.json --port 5000
+postmock collection.json --port 5000
 
 # With dynamic responses and delay simulation
-mockify collection.json --dynamic --delay 100-300
+postmock collection.json --dynamic --delay 100-300
 ```
 
 ## 📖 CLI Options
@@ -65,13 +65,13 @@ mockify collection.json --dynamic --delay 100-300
 
 ### Simple Mock Server
 ```bash
-mockify my-api.json
+postmock my-api.json
 ```
 Creates a mock server on port 4000 using your API specification.
 
 ### Advanced Configuration
 ```bash
-mockify openapi.yaml \
+postmock openapi.yaml \
   --port 5000 \
   --dynamic \
   --delay 200-500 \
@@ -180,8 +180,8 @@ All endpoints defined in your input file will be automatically created with appr
 ### Local Development
 ```bash
 # Clone and install dependencies
-git clone https://github.com/leon-99/mockify.git
-cd mockify
+git clone https://github.com/leon-99/postmock.git
+cd postmock
 npm install
 
 # Run in development mode
@@ -193,7 +193,7 @@ node bin/cli.js examples/sample.json
 
 ### Project Structure
 ```
-mockify/
+postmock/
 ├── bin/
 │   └── cli.js          # CLI entry point
 ├── src/
@@ -240,6 +240,6 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 **Happy Mocking! 🎭**
 
-[Install Now](https://www.npmjs.com/package/mockify) • [View on GitHub](https://github.com/leon-99/mockify) • [Report Bug](https://github.com/leon-99/mockify/issues)
+[Install Now](https://www.npmjs.com/package/postmock) • [View on GitHub](https://github.com/leon-99/postmock) • [Report Bug](https://github.com/leon-99/postmock/issues)
 
 </div>

@@ -1,11 +1,11 @@
 {
-  "name": "mockify",
+  "name": "postmock",
   "version": "1.0.0",
   "description": "Generate mock API servers from Postman collections or OpenAPI specs",
   "main": "src/index.js",
   "type": "module",
   "bin": {
-    "mockify": "./bin/cli.js"
+    "postmock": "./bin/cli.js"
   },
   "scripts": {
     "start": "node bin/cli.js",
@@ -28,11 +28,11 @@
   "license": "MIT",
   "repository": {
     "type": "git",
-    "url": "https://github.com/leon-99/mockify.git"
+    "url": "https://github.com/leon-99/postmock.git"
   },
-  "homepage": "https://github.com/leon-99/mockify#readme",
+  "homepage": "https://github.com/leon-99/postmock#readme",
   "bugs": {
-    "url": "https://github.com/leon-99/mockify/issues"
+    "url": "https://github.com/leon-99/postmock/issues"
   },
   "dependencies": {
     "commander": "^11.1.0",
