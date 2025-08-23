@@ -49,11 +49,7 @@ export class PostmanParser {
    * @param {string} basePath - Base path for current level
    */
   processItems(items, basePath = '') {
-    console.log(`📂 Processing items at level: ${basePath || 'root'}, count: ${items.length || 0}`);
-    
     items.forEach(item => {
-      console.log(`  📋 Item: ${item.name}, has request: ${!!item.request}, has sub-items: ${!!(item.item && Array.isArray(item.item))}`);
-      
       if (item.request) {
         this.processRequest(item, basePath);
       } else if (item.item && Array.isArray(item.item)) {
@@ -71,8 +67,6 @@ export class PostmanParser {
     const request = item.request;
     const method = request.method || 'GET';
     let path = this.extractPath(request);
-    
-    console.log(`    ✅ Found request: ${method} ${path}`);
     
     const examples = this.extractExamples(item);
     
@@ -92,7 +86,6 @@ export class PostmanParser {
    * @param {string} basePath - Base path
    */
   processFolder(item, basePath) {
-    console.log(`    📁 Processing folder: ${item.name}`);
     this.processItems(item.item, basePath);
   }
 
