@@ -1,0 +1,41 @@
+{
+  "name": "api-mockgen",
+  "version": "1.0.0",
+  "description": "Generate mock API servers from Postman collections or OpenAPI specs",
+  "main": "src/index.js",
+  "type": "module",
+  "bin": {
+    "api-mockgen": "./bin/cli.js"
+  },
+  "scripts": {
+    "start": "node bin/cli.js",
+    "dev": "node --watch bin/cli.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "api",
+    "mock",
+    "postman",
+    "openapi",
+    "swagger",
+    "cli",
+    "server"
+  ],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^11.1.0",
+    "express": "^4.18.2",
+    "cors": "^2.8.5",
+    "@faker-js/faker": "^8.3.1",
+    "postman-collection": "^4.1.4",
+    "js-yaml": "^4.1.0",
+    "chalk": "^5.3.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.2"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

@@ -1,0 +1,5159 @@
+{
+	"info": {
+		"_postman_id": "5f44e59b-7098-4fdd-8ed5-25e9bf95248e",
+		"name": "jackpot.node",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "45804280",
+		"_collection_link": "https://web-artisans.postman.co/workspace/Team-Workspace~33142bce-2c0c-4381-88a6-4a067553d7ce/collection/45804716-5f44e59b-7098-4fdd-8ed5-25e9bf95248e?action=share&source=collection_link&creator=45804280"
+	},
+	"item": [
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "login",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"email\":\"evefoster@example.com\",\r\n    \"password\":\"Luc76TTOYCi5BCyGa3ep4A==\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/login",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"login"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"email\":\"john@example.com\",\r\n    \"password\":\"Luc76TTOYCi5BCyGa3ep4A==\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/login",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"login"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "648"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"288-fzvgYol6HLcOG8fBOgySf1DcSjc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 09:55:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1MTczNSwibmJmIjoxNzU1MjUxNzM1LCJqdGkiOiIxLTE3NTUyNTE3MzUtOGE4cnIydjlnIiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI1NTMzNX0.v_FvMHc7WGa6VdFMJJUVv5xrkMZk5jLSn-ugXcXTN9g\",\n        \"chips\": {\n            \"chip_id\": 1,\n            \"balance\": 907210,\n            \"exposure\": 0,\n            \"profit_loss\": -10200,\n            \"upline\": 10200,\n            \"user_id\": 1,\n            \"user_name\": \"johndoe\",\n            \"user_email\": \"john@example.com\"\n        },\n        \"user\": {\n            \"id\": 1,\n            \"name\": \"John Doe\",\n            \"role_id\": 1,\n            \"is_withdrawal\": true\n        }\n    },\n    \"message\": \"Logged in Successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Common",
+			"item": [
+				{
+					"name": "event/types",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjMiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1Mjg2MywibmJmIjoxNzU1MjUyODYzLCJqdGkiOiIzLTE3NTUyNTI4NjMtaXlsenVndGk1IiwiaWQiOjMsInVzZXJuYW1lIjoiZXZlZm9zdGVyIiwiZW1haWwiOiJldmVmb3N0ZXJAZXhhbXBsZS5jb20iLCJyb2xlX2lkIjozLCJleHAiOjE3NTUyNjM2NjN9.Z3FUabuarK0nZG8203d_y7BSItrmhMFudQSrH4sb2qQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/event/types",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"event",
+								"types"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "event/types",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/event/types",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"event",
+										"types"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "3322"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"cfa-0VHHff4RQ1w+iJwWzg2ms+1+vjo\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 10:14:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 1,\n            \"name\": \"Football\",\n            \"created_on\": \"2025-06-11T11:55:07.240Z\",\n            \"created_by\": null,\n            \"modified_on\": \"2025-06-11T11:55:07.240Z\",\n            \"modified_by\": null\n        },\n        {\n            \"id\": 2,\n            \"name\": \"Tennis\",\n            \"created_on\": \"2025-06-11T11:55:07.240Z\",\n            \"created_by\": null,\n            \"modified_on\": \"2025-06-11T11:55:07.240Z\",\n            \"modified_by\": null\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "casino/games",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjMiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1Mjg2MywibmJmIjoxNzU1MjUyODYzLCJqdGkiOiIzLTE3NTUyNTI4NjMtaXlsenVndGk1IiwiaWQiOjMsInVzZXJuYW1lIjoiZXZlZm9zdGVyIiwiZW1haWwiOiJldmVmb3N0ZXJAZXhhbXBsZS5jb20iLCJyb2xlX2lkIjozLCJleHAiOjE3NTUyNjM2NjN9.Z3FUabuarK0nZG8203d_y7BSItrmhMFudQSrH4sb2qQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/casino/games",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"casino",
+								"games"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "casino/games",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:3000/casino/games",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"casino",
+										"games"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "289290"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"46a0a-0VYSzRss9PN4N5JYcfd8b7/rHIY\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 10:23:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"data\": {\n            \"int\": {\n                \"MAC88\": {\n                    \"dragon tiger\": [\n                        {\n                            \"id\": 150001,\n                            \"product\": \"MAC88\",\n                            \"name\": \"Dragon Tiger\",\n                            \"category\": \"dragon tiger\",\n                            \"game_type\": \"dragon tiger\",\n                            \"url_thumb\": \"https://cdn.dreamdelhi.com/mac88/dt_mac88.webp\",\n                            \"multiplier\": 100000,\n                            \"position\": 1999,\n                            \"event_type_id\": 99995\n                        },\n                        {\n                            \"id\": 150013,\n                            \"product\": \"MAC88\",\n                            \"name\": \"Dragon Tiger Lion\",\n                            \"category\": \"dragon tiger\",\n                            \"game_type\": \"dragon tiger\",\n                            \"url_thumb\": \"https://cdn.dreamdelhi.com/mac88/dtl_20_20.webp\",\n                            \"multiplier\": 100000,\n                            \"position\": 1999,\n                            \"event_type_id\": 99995\n                        },\n                        {\n                            \"id\": 150036,\n                            \"product\": \"MAC88\",\n                            \"name\": \"1 Day Dragon Tiger\",\n                            \"category\": \"dragon tiger\",\n                            \"game_type\": \"dragon tiger\",\n                            \"url_thumb\": \"https://cdn.dreamdelhi.com/mac88/dt_1day.webp\",\n                            \"multiplier\": 100000,\n                            \"position\": 1999,\n                            \"event_type_id\": 99995\n                        }\n                    ]\n                }\n            },\n            \"settings\": {\n                \"id\": 1521838,\n                \"user_id\": 1522315,\n                \"user_level\": \"1-1231-1506041-1522191-1522315\",\n                \"min_bet\": \"100.00\",\n                \"max_bet\": \"25000.00\",\n                \"bet_allow\": 1,\n                \"created_at\": null,\n                \"updated_at\": null\n            }\n        },\n        \"status\": true,\n        \"error\": {\n            \"message\": \"\",\n            \"code\": 0\n        }\n    },\n    \"message\": \"Success\"\n}\n"
+						}
+					]
+				},
+				{
+					"name": "constants",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/constants",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"constants"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "constants",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/constants",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"constants"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "77"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d-FXkhppxoNN+32dmYYG7cRpBitbs\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Aug 2025 11:13:53 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"FILTER_RANGE_MASTER\": 30,\n        \"TIME_ZONE\": \"Asia/Kolkata\"\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "wallet",
+			"item": [
+				{
+					"name": "/wallet/chip",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjMiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1NDI2MywibmJmIjoxNzU1MjU0MjYzLCJqdGkiOiIzLTE3NTUyNTQyNjMtZDZ2eHZ1ZnJpIiwiaWQiOjMsInVzZXJuYW1lIjoiZXZlZm9zdGVyIiwiZW1haWwiOiJldmVmb3N0ZXJAZXhhbXBsZS5jb20iLCJyb2xlX2lkIjozLCJleHAiOjE3NTUyNjUwNjN9.K1cYBawwrUNsDafsiYOGu4mr_8bcBNgJGJXKxRlPukU",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "user_id",
+									"value": "2",
+									"type": "text",
+									"disabled": true
+								}
+							]
+						},
+						"url": {
+							"raw": "{{url}}/wallet/chip?user_id=3",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wallet",
+								"chip"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/wallet/chip",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "user_id",
+											"value": "2",
+											"type": "text",
+											"disabled": true
+										}
+									]
+								},
+								"url": {
+									"raw": "{{url}}/wallet/chip?user_id=3",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"wallet",
+										"chip"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "186"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ba-f+IEaCj57od1kXf4ze19ct6sIoU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 10:43:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"chip_id\": 3,\n        \"balance\": 2009,\n        \"exposure\": 0,\n        \"profit_loss\": 29,\n        \"upline\": 0,\n        \"user_id\": 3,\n        \"user_name\": \"evefoster\",\n        \"user_email\": \"evefoster@example.com\"\n    },\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "wallet",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjMiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1NDgyNCwibmJmIjoxNzU1MjU0ODI0LCJqdGkiOiIzLTE3NTUyNTQ4MjQtZWtiMmRuMTdrIiwiaWQiOjMsInVzZXJuYW1lIjoiZXZlZm9zdGVyIiwiZW1haWwiOiJldmVmb3N0ZXJAZXhhbXBsZS5jb20iLCJyb2xlX2lkIjozLCJleHAiOjE3NTUyNjU2MjR9.Ify2wBvfk8GRCKe_T7hI3uuNG7HBHA-BC7d4_vLAXEA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/wallet",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"wallet"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "wallet",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/wallet",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"wallet"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "711"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"2c7-ucf/IIPBPsS7ekGp4l/NHQ+3IYE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 10:48:45 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"balance\": 2009,\n        \"profit\": 29,\n        \"monthly_profit\": [\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            229,\n            0,\n            0,\n            0,\n            0\n        ],\n        \"monthly_loss\": [\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            0,\n            200,\n            0,\n            0,\n            0,\n            0\n        ],\n        \"monthly_deposit\": [\n            0,\n            0,\n            0,\n            0,\n            3000,\n            0\n        ],\n        \"monthly_withdrawal\": [\n            0,\n            0,\n            0,\n            0,\n            1000,\n            0\n        ],\n        \"transactions\": [\n            {\n                \"transaction_type\": \"credit\",\n                \"amount\": 2000,\n                \"description\": \"B-Deposit From Parent\"\n            },\n            {\n                \"transaction_type\": \"debit\",\n                \"amount\": 1000,\n                \"description\": \"B-Deposit To Down-Line\"\n            },\n            {\n                \"transaction_type\": \"credit\",\n                \"amount\": 151,\n                \"description\": \"Market settlement - Win: 151.00\"\n            },\n            {\n                \"transaction_type\": \"debit\",\n                \"amount\": 100,\n                \"description\": \"bet created\"\n            },\n            {\n                \"transaction_type\": \"credit\",\n                \"amount\": 130,\n                \"description\": \"Market settlement - Win: 130.00\"\n            }\n        ],\n        \"total_deposit\": 3000,\n        \"total_withdrawal\": 1000\n    },\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "wallet/transfer",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjMiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1NDgyNCwibmJmIjoxNzU1MjU0ODI0LCJqdGkiOiIzLTE3NTUyNTQ4MjQtZWtiMmRuMTdrIiwiaWQiOjMsInVzZXJuYW1lIjoiZXZlZm9zdGVyIiwiZW1haWwiOiJldmVmb3N0ZXJAZXhhbXBsZS5jb20iLCJyb2xlX2lkIjozLCJleHAiOjE3NTUyNjU2MjR9.Ify2wBvfk8GRCKe_T7hI3uuNG7HBHA-BC7d4_vLAXEA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/wallet/transfer?type=withdrawal&start_date=2025-08-10&end_date=2025-08-15&user_id=3",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"wallet",
+								"transfer"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "withdrawal"
+								},
+								{
+									"key": "start_date",
+									"value": "2025-08-10"
+								},
+								{
+									"key": "end_date",
+									"value": "2025-08-15"
+								},
+								{
+									"key": "status_id",
+									"value": "",
+									"disabled": true
+								},
+								{
+									"key": "user_id",
+									"value": "3"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "wallet/transfer",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/wallet/transfer?type=withdrawal&start_date=2025-08-10&end_date=2025-08-15&user_id=3",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"wallet",
+										"transfer"
+									],
+									"query": [
+										{
+											"key": "order_by",
+											"value": "created_on",
+											"disabled": true
+										},
+										{
+											"key": "order_direction",
+											"value": "ASC",
+											"disabled": true
+										},
+										{
+											"key": "type",
+											"value": "withdrawal"
+										},
+										{
+											"key": "start_date",
+											"value": "2025-08-10"
+										},
+										{
+											"key": "end_date",
+											"value": "2025-08-15"
+										},
+										{
+											"key": "date",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "status_id",
+											"value": "",
+											"disabled": true
+										},
+										{
+											"key": "user_id",
+											"value": "3"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "218"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"da-9q5n2X9rWSbC5VbXnCrrVTI/yRU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 10:53:32 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 80,\n            \"requestor_id\": 3,\n            \"status_name\": \"A\",\n            \"description\": \"Approved\",\n            \"type\": \"withdrawal\",\n            \"amount\": 1000,\n            \"created_on\": \"2025-08-14T13:31:36.327Z\",\n            \"approver_name\": \"Jane Smith\"\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "wallet/transfer/",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjMiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1NDgyNCwibmJmIjoxNzU1MjU0ODI0LCJqdGkiOiIzLTE3NTUyNTQ4MjQtZWtiMmRuMTdrIiwiaWQiOjMsInVzZXJuYW1lIjoiZXZlZm9zdGVyIiwiZW1haWwiOiJldmVmb3N0ZXJAZXhhbXBsZS5jb20iLCJyb2xlX2lkIjozLCJleHAiOjE3NTUyNjU2MjR9.Ify2wBvfk8GRCKe_T7hI3uuNG7HBHA-BC7d4_vLAXEA",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n       \"amount\":\"100\",   \r\n       \"type\":\"withdrawal\",\r\n       \"password\":\"Luc76TTOYCi5BCyGa3ep4A==\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/wallet/transfer/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"wallet",
+								"transfer",
+								""
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "wallet/transfer/",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n       \"amount\":\"100\",   \r\n       \"type\":\"withdrawal\",\r\n       \"password\":\"Luc76TTOYCi5BCyGa3ep4A==\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/wallet/transfer/",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"wallet",
+										"transfer",
+										""
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "63"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3f-HQ7rJiLpr7Jq9YEuJ5BNZyV4EWM\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:03:33 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"request_id\": 82\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "wallet/transfer/11",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjMiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1NTkxMCwibmJmIjoxNzU1MjU1OTEwLCJqdGkiOiIzLTE3NTUyNTU5MTAteHpzNmh4bTQ0IiwiaWQiOjMsInVzZXJuYW1lIjoiZXZlZm9zdGVyIiwiZW1haWwiOiJldmVmb3N0ZXJAZXhhbXBsZS5jb20iLCJyb2xlX2lkIjozLCJleHAiOjE3NTUyNjY3MTB9.vaqvKRVEMtMZgDD89BkkwB3QBWUY93nbZC8fmRbGR7U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/wallet/transfer/82",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"wallet",
+								"transfer",
+								"82"
+							],
+							"query": [
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "wallet/transfer/11",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/wallet/transfer/82",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"wallet",
+										"transfer",
+										"82"
+									],
+									"query": [
+										{
+											"key": "",
+											"value": "",
+											"disabled": true
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "117"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"75-AAekZDvIUh52OVJUlElYUeRHJLc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:05:39 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"Message\": \"Delete Request successfully.\"\n        }\n    ],\n    \"message\": \"Deleted Pending Request Successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "wallet/send",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1NTk5NSwibmJmIjoxNzU1MjU1OTk1LCJqdGkiOiIxLTE3NTUyNTU5OTUtd3V3Zjl3MTh1IiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI2Njc5NX0.AV9xtnZd1df3pHBpYemKrlEOxnfxhhVynMSaP5XNFKQ",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 2,\r\n    \"amount\": \"100\",\r\n    \"note\": \"\",\r\n    \"type\": \"withdrawal\",\r\n    \"created_by\": \"1\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/wallet/send",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"wallet",
+								"send"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "wallet/send",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\": 2,\r\n    \"amount\": \"100\",\r\n    \"note\": \"\",\r\n    \"type\": \"withdrawal\",\r\n    \"created_by\": \"1\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/wallet/send",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"wallet",
+										"send"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "106"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6a-JYP139VdVwAPxt8Yum6Yg2WCkG8\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:07:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"ReceiverBalance\": 80084,\n            \"SenderBalance\": 7000,\n            \"ErrorCode\": 0\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "wallet/transfer/process",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjIiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1NjEwMywibmJmIjoxNzU1MjU2MTAzLCJqdGkiOiIyLTE3NTUyNTYxMDMtZjJxNGx2aDgyIiwiaWQiOjIsInVzZXJuYW1lIjoiamFuZSIsImVtYWlsIjoiamFuZUBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjIsImV4cCI6MTc1NTI2NjkwM30.iFB-D5PxcXtJRpI4qhzpnZES28NgRoPbLw8HZozFVak",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"request_id\":81,\r\n    \"status_id\":8,\r\n    \"approver_id\":2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/wallet/transfer/process",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wallet",
+								"transfer",
+								"process"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "wallet/transfer/process",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"request_id\":81,\r\n    \"status_id\":8,\r\n    \"approver_id\":2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/wallet/transfer/process",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"wallet",
+										"transfer",
+										"process"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "86"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"56-iMqQ6OKk+onaoOuxa2kDxEeaSes\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:08:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"Message\": \"Request rejected.\",\n            \"Code\": 0\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "wallet/summary?user_id=2",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjIiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1NjQxNiwibmJmIjoxNzU1MjU2NDE2LCJqdGkiOiIyLTE3NTUyNTY0MTYtc2g2bmNwNzR2IiwiaWQiOjIsInVzZXJuYW1lIjoiamFuZSIsImVtYWlsIjoiamFuZUBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjIsImV4cCI6MTc1NTI2NzIxNn0.PF161V7gR6ws1aklfFqIWfiOOzK0h0-YsatqOhvp1Uw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/wallet/summary?user_id=2",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"wallet",
+								"summary"
+							],
+							"query": [
+								{
+									"key": "user_id",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "wallet/summary?user_id=2",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/wallet/summary?user_id=2",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"wallet",
+										"summary"
+									],
+									"query": [
+										{
+											"key": "user_id",
+											"value": "2"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "187"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"bb-nLcEcnRKDyczZVCIoZyY47SYiC4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:14:09 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"up_line_profit_loss\": 173,\n            \"client_total_wallet\": 3153,\n            \"total_client_count\": 2,\n            \"current_balance\": 7000,\n            \"downline_credit\": 3153,\n            \"username\": \"jane\"\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "wallet/settlement",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1NjUwMCwibmJmIjoxNzU1MjU2NTAwLCJqdGkiOiIxLTE3NTUyNTY1MDAtNnd2aDkzZmUxIiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI2NzMwMH0.iXnjX9xdONYW6tiaCvnxveia3ijrZm8n_41Ec0ZxZyo",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 2,\r\n    \"amount\": \"60\",\r\n    \"note\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/wallet/settlement",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"wallet",
+								"settlement"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "wallet/settlement",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\": 2,\r\n    \"amount\": \"60\",\r\n    \"note\": \"\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/wallet/settlement",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"wallet",
+										"settlement"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "180"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"b4-HYHlnjEhkx3vcjFY4YQuyB/+Wkk\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:18:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"UserBalance\": 6840,\n            \"ParentBalance\": 80244,\n            \"UpdatedUpline\": 13,\n            \"OriginalUpline\": 73,\n            \"SettlementDirection\": \"User to Parent\",\n            \"ErrorCode\": 0\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "wallet/transfer/all",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjIiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1Njc4MywibmJmIjoxNzU1MjU2NzgzLCJqdGkiOiIyLTE3NTUyNTY3ODMtZnBmNWx2aDRmIiwiaWQiOjIsInVzZXJuYW1lIjoiamFuZSIsImVtYWlsIjoiamFuZUBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjIsImV4cCI6MTc1NTI2NzU4M30.76xLEejhPeuXEr2lVaP9TeiIHwkZIXI7cossG3qxF-c",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\":3,\r\n    \"start_date\":\"2025-08-10\",\r\n    \"end_date\":\"2025-08-15\",\r\n    \"status\":\"A\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/wallet/transfer/all",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"wallet",
+								"transfer",
+								"all"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "wallet/transfer/all",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\":3,\r\n    \"start_date\":\"2025-08-10\",\r\n    \"end_date\":\"2025-08-15\",\r\n    \"status\":\"A\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/wallet/transfer/all",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"wallet",
+										"transfer",
+										"all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "189"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"bd-yfRjFpUF5pa3JgnNwAMQf6AsSlE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:26:47 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 80,\n            \"requestor_id\": 3,\n            \"username\": \"evefoster\",\n            \"status\": \"Approved\",\n            \"amount\": 1000,\n            \"type\": \"withdrawal\",\n            \"created_on\": \"2025-08-14T13:31:36.327Z\"\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "wallet/hierarchy",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1NzQyOSwibmJmIjoxNzU1MjU3NDI5LCJqdGkiOiIxLTE3NTUyNTc0MjktcjV5Z3c4c3o4IiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI2ODIyOX0.KZ15PKr49I3TzRrzIXXfXgj1Dd5ONI144i2UnRUnSsE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/wallet/hierarchy/37",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"wallet",
+								"hierarchy",
+								"37"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "wallet/hierarchy",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/wallet/hierarchy/37",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"wallet",
+										"hierarchy",
+										"37"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "166"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"a6-MoTAaXewqeNCFIBCf6HYbdtgpb4\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:30:38 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 37,\n            \"parent_id\": 1,\n            \"user_username\": \"Naru7\",\n            \"user_balance\": 90046,\n            \"parent_username\": \"johndoe\",\n            \"parent_balance\": 799870\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "report",
+			"item": [
+				{
+					"name": "report/weekly",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1NzQyOSwibmJmIjoxNzU1MjU3NDI5LCJqdGkiOiIxLTE3NTUyNTc0MjktcjV5Z3c4c3o4IiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI2ODIyOX0.KZ15PKr49I3TzRrzIXXfXgj1Dd5ONI144i2UnRUnSsE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:3000/report/weekly",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"report",
+								"weekly"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "report/weekly",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "127.0.0.1:3000/report/weekly",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "3000",
+									"path": [
+										"report",
+										"weekly"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "599"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"257-3nXPbh9futCpJiLeOg+MB2AZVmA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:31:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"report_date\": \"2025-08-08T00:00:00.000Z\",\n            \"event_types\": null\n        },\n        {\n            \"report_date\": \"2025-08-09T00:00:00.000Z\",\n            \"event_types\": null\n        },\n        {\n            \"report_date\": \"2025-08-10T00:00:00.000Z\",\n            \"event_types\": null\n        },\n        {\n            \"report_date\": \"2025-08-11T00:00:00.000Z\",\n            \"event_types\": \"[{\\\"event_type_name\\\":\\\"Tennis\\\",\\\"total_profit_loss\\\":30.00}]\"\n        },\n        {\n            \"report_date\": \"2025-08-12T00:00:00.000Z\",\n            \"event_types\": \"[{\\\"event_type_name\\\":\\\"Tennis\\\",\\\"total_profit_loss\\\":51.00}]\"\n        },\n        {\n            \"report_date\": \"2025-08-13T00:00:00.000Z\",\n            \"event_types\": null\n        },\n        {\n            \"report_date\": \"2025-08-14T00:00:00.000Z\",\n            \"event_types\": null\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "report/account/statement/master",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1NzQyOSwibmJmIjoxNzU1MjU3NDI5LCJqdGkiOiIxLTE3NTUyNTc0MjktcjV5Z3c4c3o4IiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI2ODIyOX0.KZ15PKr49I3TzRrzIXXfXgj1Dd5ONI144i2UnRUnSsE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"parent_id\":\"2\",\r\n\"start_date\":\"2025-07-25\",\r\n\"end_date\":\"2025-08-10\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/report/account/statement/master",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"report",
+								"account",
+								"statement",
+								"master"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "report/account/statement/master",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"parent_id\":\"2\",\r\n\"start_date\":\"2025-07-25\",\r\n\"end_date\":\"2025-08-10\"    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/report/account/statement/master",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"report",
+										"account",
+										"statement",
+										"master"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4296"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"10c8-6z3fG85Y2RM+5UVKewCIZ1g/suU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:34:46 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"event_name\": null,\n            \"created_on\": \"2025-08-06T17:10:29.150Z\",\n            \"bet_type\": null,\n            \"nation\": null,\n            \"transaction_type\": \"debit\",\n            \"upline_balance\": null,\n            \"amount\": -100,\n            \"description\": \"B-Withdraw To Parent\",\n            \"bet_details\": null\n        },\n        {\n            \"event_name\": \"Molcan v Krumich\",\n            \"created_on\": \"2025-08-04T13:49:06.157Z\",\n            \"bet_type\": \"MO\",\n            \"nation\": \"Alex Molcan\",\n            \"transaction_type\": \"debit\",\n            \"upline_balance\": 92,\n            \"amount\": -40,\n            \"description\": \"Market settlement - Win: 140.00\",\n            \"bet_details\": \"[{\\\"username\\\":\\\"evefoster\\\",\\\"bet_id\\\":2110,\\\"event_name\\\":\\\"Molcan v Krumich\\\",\\\"type\\\":\\\"MO\\\",\\\"stake\\\":100.00,\\\"nation\\\":\\\"Alex Molcan\\\",\\\"odd\\\":1.40,\\\"created_on\\\":\\\"2025-08-04T13:46:56.660\\\",\\\"profit_loss\\\":40.00}]\"\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/report/account/statement/user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1NzQyOSwibmJmIjoxNzU1MjU3NDI5LCJqdGkiOiIxLTE3NTUyNTc0MjktcjV5Z3c4c3o4IiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI2ODIyOX0.KZ15PKr49I3TzRrzIXXfXgj1Dd5ONI144i2UnRUnSsE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\r\n\"user_id\":\"3\",\r\n\"start_date\":\"2025-08-13\",\r\n\"end_date\":\"2025-08-15\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/report/account/statement/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"report",
+								"account",
+								"statement",
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/report/account/statement/user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n\"user_id\":\"3\",\r\n\"start_date\":\"2025-08-13\",\r\n\"end_date\":\"2025-08-15\"    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/report/account/statement/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"report",
+										"account",
+										"statement",
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "951"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3b7-qJIHX0ovHzX/kvyG+m1VuQFt7hE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:42:20 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"created_on\": \"2025-08-14T13:31:58.013Z\",\n            \"bet_id\": null,\n            \"amount\": -1000,\n            \"event_name\": null,\n            \"type\": null,\n            \"nation\": null,\n            \"user_id\": 3,\n            \"transaction_type\": \"debit\",\n            \"current_balance\": 9,\n            \"bet_details\": \"{\\\"username\\\":\\\"evefoster\\\"}\"\n        },\n        {\n            \"created_on\": \"2025-08-13T15:50:36.167Z\",\n            \"bet_id\": 2113,\n            \"amount\": 151,\n            \"event_name\": \"Mrva v Vacherot\",\n            \"type\": \"MO\",\n            \"nation\": \"Valentin Vacherot\",\n            \"user_id\": 3,\n            \"transaction_type\": \"credit\",\n            \"current_balance\": 1009,\n            \"bet_details\": \"{\\\"username\\\":\\\"evefoster\\\",\\\"bet_id\\\":2113,\\\"event_name\\\":\\\"Mrva v Vacherot\\\",\\\"type\\\":\\\"MO\\\",\\\"stake\\\":100.00,\\\"ip\\\":\\\"localhost\\\",\\\"nation\\\":\\\"Valentin Vacherot\\\",\\\"odd\\\":1.51,\\\"created_on\\\":\\\"2025-08-12T11:28:29.327\\\",\\\"profit_loss\\\":51.00}\"\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "report/pnl/master",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1NzQyOSwibmJmIjoxNzU1MjU3NDI5LCJqdGkiOiIxLTE3NTUyNTc0MjktcjV5Z3c4c3o4IiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI2ODIyOX0.KZ15PKr49I3TzRrzIXXfXgj1Dd5ONI144i2UnRUnSsE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"event_type_id\": 2,\r\n    \"user_id\": \"2\",\r\n    \"start_date\": \"2025-08-11\",\r\n    \"end_date\": \"2025-08-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/report/pnl/master",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"report",
+								"pnl",
+								"master"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "report/pnl/master",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"event_type_id\": 2,\r\n    \"user_id\": \"2\",\r\n    \"start_date\": \"2025-08-11\",\r\n    \"end_date\": \"2025-08-15\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/report/pnl/master",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"report",
+										"pnl",
+										"master"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1137"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"471-iBBekIpSi6WA5e0nQv+vS58MkWg\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:48:11 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"event_name\": \"Juarez v Ga Noce\",\n            \"game_code\": null,\n            \"created_on\": \"2025-08-11T16:51:03.367Z\",\n            \"profit_loss\": -30,\n            \"comm_in\": 0,\n            \"comm_out\": 0,\n            \"bet_type_group\": \"[{\\\"type\\\":\\\"MO\\\",\\\"nation\\\":\\\"Facundo Juarez\\\",\\\"profit_loss\\\":-30.00,\\\"comm_in\\\":0.00,\\\"comm_out\\\":0.00,\\\"bet_details_list\\\":[{\\\"username\\\":\\\"evefoster\\\",\\\"bet_id\\\":2112,\\\"event_name\\\":\\\"Juarez v Ga Noce\\\",\\\"type\\\":\\\"MO\\\",\\\"stake\\\":100.00,\\\"ip\\\":\\\"localhost\\\",\\\"nation\\\":\\\"Facundo Juarez\\\",\\\"is_back\\\":true,\\\"odd\\\":1.30,\\\"created_on\\\":\\\"2025-08-11T16:51:03.367\\\",\\\"profit_loss\\\":30.00}]}]\"\n        },\n        {\n            \"event_name\": \"Mrva v Vacherot\",\n            \"game_code\": null,\n            \"created_on\": \"2025-08-12T11:28:29.327Z\",\n            \"profit_loss\": -51,\n            \"comm_in\": 0,\n            \"comm_out\": 0,\n            \"bet_type_group\": \"[{\\\"type\\\":\\\"MO\\\",\\\"nation\\\":\\\"Valentin Vacherot\\\",\\\"profit_loss\\\":-51.00,\\\"comm_in\\\":0.00,\\\"comm_out\\\":0.00,\\\"bet_details_list\\\":[{\\\"username\\\":\\\"evefoster\\\",\\\"bet_id\\\":2113,\\\"event_name\\\":\\\"Mrva v Vacherot\\\",\\\"type\\\":\\\"MO\\\",\\\"stake\\\":100.00,\\\"ip\\\":\\\"localhost\\\",\\\"nation\\\":\\\"Valentin Vacherot\\\",\\\"is_back\\\":true,\\\"odd\\\":1.51,\\\"created_on\\\":\\\"2025-08-12T11:28:29.327\\\",\\\"profit_loss\\\":51.00}]}]\"\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "report/settlement",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1NzQyOSwibmJmIjoxNzU1MjU3NDI5LCJqdGkiOiIxLTE3NTUyNTc0MjktcjV5Z3c4c3o4IiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI2ODIyOX0.KZ15PKr49I3TzRrzIXXfXgj1Dd5ONI144i2UnRUnSsE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"user_id\":\"13\",\r\n\"start_date\":\"2025-07-28\",\r\n\"end_date\":\"2025-08-05\"    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/report/settlement",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"report",
+								"settlement"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "report/settlement",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"user_id\":\"13\",\r\n\"start_date\":\"2025-07-28\",\r\n\"end_date\":\"2025-08-05\"    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/report/settlement",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"report",
+										"settlement"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "648"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"288-iN2CcuaI71K7rGSGLmU4Ozr49YU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:50:16 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"description\": \"B-Deposit From Parent\",\n            \"amount\": 100000,\n            \"transaction_type\": \"credit\",\n            \"note\": \"initial deposit\",\n            \"created_on\": \"2025-08-02T11:02:16.267Z\"\n        },\n        {\n            \"description\": \"B-Deposit To Down-Line\",\n            \"amount\": 10000,\n            \"transaction_type\": \"debit\",\n            \"note\": \"master initial deposit\",\n            \"created_on\": \"2025-08-02T11:03:09.917Z\"\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "report/top/clients",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1NzQyOSwibmJmIjoxNzU1MjU3NDI5LCJqdGkiOiIxLTE3NTUyNTc0MjktcjV5Z3c4c3o4IiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI2ODIyOX0.KZ15PKr49I3TzRrzIXXfXgj1Dd5ONI144i2UnRUnSsE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"start_date\":\"2025-07-28\",\r\n    \"end_date\":\"2025-08-05\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "127.0.0.1:3000/report/top/clients",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"report",
+								"top",
+								"clients"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "report/top/clients",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"start_date\":\"2025-07-28\",\r\n    \"end_date\":\"2025-08-05\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "127.0.0.1:3000/report/top/clients",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "3000",
+									"path": [
+										"report",
+										"top",
+										"clients"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "240"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f0-1TXOCanJaY+sSq0SAFLrRxc3dPQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:52:02 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"username\": \"EveFoster\",\n            \"total_profit_loss\": -176\n        },\n        {\n            \"username\": \"evefoster\",\n            \"total_profit_loss\": -52\n        },\n        {\n            \"username\": \"Thampi7\",\n            \"total_profit_loss\": -46\n        },\n        {\n            \"username\": \"Geovanni7\",\n            \"total_profit_loss\": 144\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "report/sports/pnl",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1NzQyOSwibmJmIjoxNzU1MjU3NDI5LCJqdGkiOiIxLTE3NTUyNTc0MjktcjV5Z3c4c3o4IiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI2ODIyOX0.KZ15PKr49I3TzRrzIXXfXgj1Dd5ONI144i2UnRUnSsE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 2,\r\n    \"start_date\": \"2025-07-25\",\r\n    \"end_date\": \"2025-08-05\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/report/sports/pnl",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"report",
+								"sports",
+								"pnl"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "report/sports/pnl",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\": 2,\r\n    \"start_date\": \"2025-07-25\",\r\n    \"end_date\": \"2025-08-05\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/report/sports/pnl",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"report",
+										"sports",
+										"pnl"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "128"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"80-MOOzPey+Bo+aBBskwiOGca8je6M\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:52:36 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"username\": \"jane\",\n        \"details\": [\n            {\n                \"event_type_name\": \"Tennis\",\n                \"total_profit_loss\": -92\n            }\n        ]\n    },\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "report/balance/sheet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1NzQyOSwibmJmIjoxNzU1MjU3NDI5LCJqdGkiOiIxLTE3NTUyNTc0MjktcjV5Z3c4c3o4IiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI2ODIyOX0.KZ15PKr49I3TzRrzIXXfXgj1Dd5ONI144i2UnRUnSsE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/report/balance/sheet",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"report",
+								"balance",
+								"sheet"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "report/balance/sheet",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/report/balance/sheet",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"report",
+										"balance",
+										"sheet"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "209"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"d1-48NcKQuzkrSJBiHuzXJSJGNaZtc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:53:29 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"clients\": [\n            {\n                \"user_id\": 13,\n                \"role_id\": 1,\n                \"username\": \"JD_Jr\",\n                \"profit_loss\": 3\n            },\n            {\n                \"user_id\": 37,\n                \"role_id\": 1,\n                \"username\": \"Naru7\",\n                \"profit_loss\": 46\n            }\n        ],\n        \"upline_pl\": -49,\n        \"my_pl\": 49\n    },\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "report/settlement/detail",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1ODg4OSwibmJmIjoxNzU1MjU4ODg5LCJqdGkiOiIxLTE3NTUyNTg4ODktcTUybGdpcmFtIiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI2OTY4OX0.pM9CEUsPZIIJWxxl8ZI-oVa3Q6Spu1HU1gh4gDps0CE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "127.0.0.1:3000/report/settlement/detail",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "3000",
+							"path": [
+								"report",
+								"settlement",
+								"detail"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "report/settlement/detail",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "127.0.0.1:3000/report/settlement/detail",
+									"host": [
+										"127",
+										"0",
+										"0",
+										"1"
+									],
+									"port": "3000",
+									"path": [
+										"report",
+										"settlement",
+										"detail"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "147"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"93-zsVLrlgxQeQuvOkH9VqHYsOo98I\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:54:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"clients\": [\n            {\n                \"user_id\": 13,\n                \"role_id\": 1,\n                \"username\": \"JD_Jr\",\n                \"profit_loss\": 81\n            }\n        ],\n        \"upline_pl\": -49,\n        \"my_pl\": 49\n    },\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "report/export",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1ODg4OSwibmJmIjoxNzU1MjU4ODg5LCJqdGkiOiIxLTE3NTUyNTg4ODktcTUybGdpcmFtIiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI2OTY4OX0.pM9CEUsPZIIJWxxl8ZI-oVa3Q6Spu1HU1gh4gDps0CE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"type\":\"account_statement\",\r\n    \"start_date\":\"2025-07-25\",\r\n    \"end_date\":\"2025-08-05\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/report/export",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"report",
+								"export"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "report/settlement/master",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1ODg4OSwibmJmIjoxNzU1MjU4ODg5LCJqdGkiOiIxLTE3NTUyNTg4ODktcTUybGdpcmFtIiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI2OTY4OX0.pM9CEUsPZIIJWxxl8ZI-oVa3Q6Spu1HU1gh4gDps0CE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\":2,\r\n    \"start_date\":\"2025-07-28\",\r\n    \"end_date\":\"2025-08-05\"  \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/report/settlement/master",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"report",
+								"settlement",
+								"master"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "report/settlement/master",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\":2,\r\n    \"start_date\":\"2025-07-28\",\r\n    \"end_date\":\"2025-08-05\"  \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/report/settlement/master",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"report",
+										"settlement",
+										"master"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "524"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"20c-9NSdaky0kpQlz9dWTBFV+6Cj2cE\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:56:56 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"description\": \"B-Deposit From Parent\",\n            \"amount\": 10000,\n            \"transaction_type\": \"credit\",\n            \"note\": \"master initial deposit\",\n            \"created_on\": \"2025-08-02T11:03:09.920Z\"\n        },\n        {\n            \"description\": \"B-Deposit To Down-Line\",\n            \"amount\": 1000,\n            \"transaction_type\": \"debit\",\n            \"note\": \"Transfer from approved request\",\n            \"created_on\": \"2025-08-02T11:05:00.367Z\"\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "report/pnl/user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1ODg4OSwibmJmIjoxNzU1MjU4ODg5LCJqdGkiOiIxLTE3NTUyNTg4ODktcTUybGdpcmFtIiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI2OTY4OX0.pM9CEUsPZIIJWxxl8ZI-oVa3Q6Spu1HU1gh4gDps0CE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 3,\r\n    \"start_date\": \"2025-07-25\",\r\n    \"end_date\": \"2025-08-05\",\r\n    \"event_type_id\": null\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/report/pnl/user",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"report",
+								"pnl",
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "report/pnl/user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\": 3,\r\n    \"start_date\": \"2025-07-25\",\r\n    \"end_date\": \"2025-08-05\",\r\n    \"event_type_id\": null\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/report/pnl/user",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"report",
+										"pnl",
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1541"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"605-1lYBVichmN7KpGN9kB4FSIdRQGI\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:57:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"event_name\": \"Al Michelsen v Le Tien\",\n            \"game_code\": null,\n            \"profit_loss\": 108,\n            \"comm_in\": 0,\n            \"comm_out\": 0,\n            \"bet_type_group\": \"[{\\\"type\\\":\\\"MO\\\",\\\"nation\\\":\\\"Alex Michelsen\\\",\\\"profit_loss\\\":108.00,\\\"comm_in\\\":0.00,\\\"comm_out\\\":0.00,\\\"bet_details_list\\\":[{\\\"username\\\":\\\"evefoster\\\",\\\"bet_id\\\":2107,\\\"event_name\\\":\\\"Al Michelsen v Le Tien\\\",\\\"type\\\":\\\"MO\\\",\\\"stake\\\":100.00,\\\"ip\\\":\\\"localhost\\\",\\\"nation\\\":\\\"Alex Michelsen\\\",\\\"odd\\\":2.08,\\\"created_on\\\":\\\"2025-08-02T11:12:52.853\\\",\\\"profit_loss\\\":108.00}]}]\"\n        },\n        {\n            \"event_name\": \"Michalski v Olivieri\",\n            \"game_code\": null,\n            \"profit_loss\": -200,\n            \"comm_in\": 0,\n            \"comm_out\": 0,\n            \"bet_type_group\": \"[{\\\"type\\\":\\\"MO\\\",\\\"nation\\\":\\\"Genaro Alberto Olivieri\\\",\\\"profit_loss\\\":-200.00,\\\"comm_in\\\":0.00,\\\"comm_out\\\":0.00,\\\"bet_details_list\\\":[{\\\"username\\\":\\\"evefoster\\\",\\\"bet_id\\\":2106,\\\"event_name\\\":\\\"Michalski v Olivieri\\\",\\\"type\\\":\\\"MO\\\",\\\"stake\\\":200.00,\\\"ip\\\":\\\"localhost\\\",\\\"nation\\\":\\\"Genaro Alberto Olivieri\\\",\\\"odd\\\":1.89,\\\"created_on\\\":\\\"2025-08-02T11:12:24.720\\\",\\\"profit_loss\\\":-200.00}]}]\"\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "report/account/statement",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjMiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1OTEyOSwibmJmIjoxNzU1MjU5MTI5LCJqdGkiOiIzLTE3NTUyNTkxMjktZXU2c29oMGVtIiwiaWQiOjMsInVzZXJuYW1lIjoiZXZlZm9zdGVyIiwiZW1haWwiOiJldmVmb3N0ZXJAZXhhbXBsZS5jb20iLCJyb2xlX2lkIjozLCJleHAiOjE3NTUyNjk5Mjl9.r-n75OyTLKBykkGhMjAOd2FGGmxZE0zGxKoNC98uz1U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"start_date\": \"2025-08-12\",\r\n    \"end_date\": \"2025-08-15\",\r\n    \"event_type_id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/report/account/statement",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"report",
+								"account",
+								"statement"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "report/account/statement",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"start_date\": \"2025-08-12\",\r\n    \"end_date\": \"2025-08-15\",\r\n    \"event_type_id\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/report/account/statement",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"report",
+										"account",
+										"statement"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "915"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"393-E+ze8ppRFShip5ICSOkQd6xiz4w\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 11:59:41 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": \"10383\",\n            \"transaction_type\": \"credit\",\n            \"description\": \"Market settlement - Win: 151.00\",\n            \"amount\": 151,\n            \"current_balance\": 1009,\n            \"created_on\": \"2025-08-13T15:50:36.167Z\",\n            \"event_name\": \"Tennis\",\n            \"bet_event_name\": \"Mrva v Vacherot\",\n            \"bet_type\": \"MO\",\n            \"event_type_id\": 2,\n            \"bet_stake\": 100,\n            \"bet_odds\": 1.51,\n            \"bet_potential_payout\": 51,\n            \"bet_match_date\": null,\n            \"bet_status_name\": \"W\",\n            \"round_id\": null,\n            \"game_id\": null,\n            \"game_code\": null,\n            \"order_id\": null,\n            \"runner_id\": \"9631219\"\n        },\n        {\n            \"id\": \"10382\",\n            \"transaction_type\": \"debit\",\n            \"description\": \"bet created\",\n            \"amount\": 100,\n            \"current_balance\": 858,\n            \"created_on\": \"2025-08-12T11:28:29.687Z\",\n            \"event_name\": \"Tennis\",\n            \"bet_event_name\": \"Mrva v Vacherot\",\n            \"bet_type\": \"MO\",\n            \"event_type_id\": 2,\n            \"bet_stake\": 100,\n            \"bet_odds\": 1.51,\n            \"bet_potential_payout\": 51,\n            \"bet_match_date\": null,\n            \"bet_status_name\": \"W\",\n            \"round_id\": null,\n            \"game_id\": null,\n            \"game_code\": null,\n            \"order_id\": null,\n            \"runner_id\": \"9631219\"\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "report/pnl",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjMiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1OTEyOSwibmJmIjoxNzU1MjU5MTI5LCJqdGkiOiIzLTE3NTUyNTkxMjktZXU2c29oMGVtIiwiaWQiOjMsInVzZXJuYW1lIjoiZXZlZm9zdGVyIiwiZW1haWwiOiJldmVmb3N0ZXJAZXhhbXBsZS5jb20iLCJyb2xlX2lkIjozLCJleHAiOjE3NTUyNjk5Mjl9.r-n75OyTLKBykkGhMjAOd2FGGmxZE0zGxKoNC98uz1U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"start_date\": \"2025-08-10\",\r\n    \"end_date\": \"2025-08-15\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/report/pnl",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"report",
+								"pnl"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "report/pnl",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"start_date\": \"2025-08-10\",\r\n    \"end_date\": \"2025-08-15\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/report/pnl",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"report",
+										"pnl"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "385"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"181-Jbi+xbspLpVdwAneVj/F8hoynng\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 12:00:49 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 2112,\n            \"user_id\": 3,\n            \"event_name\": \"Juarez v Ga Noce\",\n            \"nation\": \"Facundo Juarez\",\n            \"amount\": 30,\n            \"created_on\": \"2025-08-11T16:51:03.367Z\",\n            \"event_type_name\": \"Tennis\"\n        },\n        {\n            \"id\": 2113,\n            \"user_id\": 3,\n            \"event_name\": \"Mrva v Vacherot\",\n            \"nation\": \"Valentin Vacherot\",\n            \"amount\": 51,\n            \"created_on\": \"2025-08-12T11:28:29.327Z\",\n            \"event_type_name\": \"Tennis\"\n        }\n    ],\n    \"message\": \"User Profit Loss Report\"\n}"
+						}
+					]
+				},
+				{
+					"name": "report/bet/history",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjMiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1OTEyOSwibmJmIjoxNzU1MjU5MTI5LCJqdGkiOiIzLTE3NTUyNTkxMjktZXU2c29oMGVtIiwiaWQiOjMsInVzZXJuYW1lIjoiZXZlZm9zdGVyIiwiZW1haWwiOiJldmVmb3N0ZXJAZXhhbXBsZS5jb20iLCJyb2xlX2lkIjozLCJleHAiOjE3NTUyNjk5Mjl9.r-n75OyTLKBykkGhMjAOd2FGGmxZE0zGxKoNC98uz1U",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"start_date\": \"2025-08-11\",\r\n    \"end_date\": \"2025-08-15\",\r\n    \"min_stake\": 10,\r\n    \"max_stake\": 100,\r\n    \"bet_type\": \"MO\",\r\n    \"event_type_id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/report/bet/history",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"report",
+								"bet",
+								"history"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "report/bet/history",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"start_date\": \"2025-08-11\",\r\n    \"end_date\": \"2025-08-15\",\r\n    \"min_stake\": 10,\r\n    \"max_stake\": 100,\r\n    \"bet_type\": \"MO\",\r\n    \"event_type_id\": 2\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/report/bet/history",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"report",
+										"bet",
+										"history"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "954"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"3ba-EDhyw2ie2Wlq2TgZjBU+wqyqQ/I\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 12:05:37 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"type\": \"MO\",\n            \"username\": \"evefoster\",\n            \"event_id\": 34609249,\n            \"event_type_id\": 2,\n            \"event_type_name\": \"Tennis\",\n            \"event_name\": \"Juarez v Ga Noce\",\n            \"odd\": 1.3,\n            \"fancy_odd\": null,\n            \"nation\": \"Facundo Juarez\",\n            \"stake\": 100,\n            \"profit_loss\": 30,\n            \"status_id\": 2,\n            \"comm_in\": 0,\n            \"comm_out\": 0,\n            \"potential_payout\": 30,\n            \"is_back\": true,\n            \"ip\": \"localhost\",\n            \"round_id\": null,\n            \"game_id\": null,\n            \"game_code\": null,\n            \"order_id\": null,\n            \"runner_id\": \"9634973\",\n            \"match_date\": null,\n            \"created_on\": \"2025-08-11T16:51:03.367Z\"\n        },\n        {\n            \"type\": \"MO\",\n            \"username\": \"evefoster\",\n            \"event_id\": 34608490,\n            \"event_type_id\": 2,\n            \"event_type_name\": \"Tennis\",\n            \"event_name\": \"Mrva v Vacherot\",\n            \"odd\": 1.51,\n            \"fancy_odd\": null,\n            \"nation\": \"Valentin Vacherot\",\n            \"stake\": 100,\n            \"profit_loss\": 51,\n            \"status_id\": 2,\n            \"comm_in\": 0,\n            \"comm_out\": 0,\n            \"potential_payout\": 51,\n            \"is_back\": true,\n            \"ip\": \"localhost\",\n            \"round_id\": null,\n            \"game_id\": null,\n            \"game_code\": null,\n            \"order_id\": null,\n            \"runner_id\": \"9631219\",\n            \"match_date\": null,\n            \"created_on\": \"2025-08-12T11:28:29.327Z\"\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "user",
+			"item": [
+				{
+					"name": "user",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1OTY2MiwibmJmIjoxNzU1MjU5NjYyLCJqdGkiOiIxLTE3NTUyNTk2NjItZmxjdDNqb3ZjIiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI3MDQ2Mn0.tRk63i4RlpothARrbK7BAd1r2w7ljNckoPafwZkw10s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n     \"first_name\":\"Test\",\r\n      \"last_name\":\"7\",\r\n      \"username\":\"test7\",\r\n      \"email\":\"test7@example.com\",\r\n      \"password\":\"Luc76TTOYCi5BCyGa3ep4A==\",\r\n      \"password_confirmation\":\"Luc76TTOYCi5BCyGa3ep4A==\",\r\n      \"role_id\":\"2\",\r\n      \"user_id\":13,\r\n      \"is_blocked\":\"\",\r\n      \"is_locked\":\"\",\r\n      \"remember_token\":\"\",\r\n      \"created_by\":1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "user",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n     \"first_name\":\"Test\",\r\n      \"last_name\":\"7\",\r\n      \"username\":\"test7\",\r\n      \"email\":\"test7@example.com\",\r\n      \"password\":\"Luc76TTOYCi5BCyGa3ep4A==\",\r\n      \"password_confirmation\":\"Luc76TTOYCi5BCyGa3ep4A==\",\r\n      \"role_id\":\"2\",\r\n      \"user_id\":13,\r\n      \"is_blocked\":\"\",\r\n      \"is_locked\":\"\",\r\n      \"remember_token\":\"\",\r\n      \"created_by\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "78"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4e-nfnYzXGrXMq1BovYAOkm1C+xN2M\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 12:07:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"user_id\": 56\n        }\n    ],\n    \"message\": \"User Created Successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "user/password/withdrawal",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1OTY2MiwibmJmIjoxNzU1MjU5NjYyLCJqdGkiOiIxLTE3NTUyNTk2NjItZmxjdDNqb3ZjIiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI3MDQ2Mn0.tRk63i4RlpothARrbK7BAd1r2w7ljNckoPafwZkw10s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"old_password\":\"Luc76TTOYCi5BCyGa3ep4A=\",\r\n    \"password\" : \"Luc76TTOYCi5BCyGa3ep4A==\"\r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/password/withdrawal",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"password",
+								"withdrawal"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "user/password/withdrawal",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"old_password\":\"Luc76TTOYCi5BCyGa3ep4A=\",\r\n    \"password\" : \"Luc76TTOYCi5BCyGa3ep4A==\"\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/password/withdrawal",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"password",
+										"withdrawal"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "120"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"78-KE7XgNaC22ATud1zm14AGUIF9KU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 12:09:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"message\": \"Withdrawal password updated successfully\"\n    },\n    \"message\": \"Password Updated Successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "user/password/reset",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1OTY2MiwibmJmIjoxNzU1MjU5NjYyLCJqdGkiOiIxLTE3NTUyNTk2NjItZmxjdDNqb3ZjIiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI3MDQ2Mn0.tRk63i4RlpothARrbK7BAd1r2w7ljNckoPafwZkw10s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\":\"13\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/password/reset",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"password",
+								"reset"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "user/password/reset",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\":\"13\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/user/password/reset",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"password",
+										"reset"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "72"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"48-vWoW4EynB08WMn4yG8sDVlg4VyU\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 12:10:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"\": 0\n        }\n    ],\n    \"message\": \"Password Reset Successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "user/password/withdrawal/reset",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1OTY2MiwibmJmIjoxNzU1MjU5NjYyLCJqdGkiOiIxLTE3NTUyNTk2NjItZmxjdDNqb3ZjIiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI3MDQ2Mn0.tRk63i4RlpothARrbK7BAd1r2w7ljNckoPafwZkw10s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\":13\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/password/withdrawal/reset",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"password",
+								"withdrawal",
+								"reset"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "user/password/withdrawal/reset",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\":13\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/user/password/withdrawal/reset",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"password",
+										"withdrawal",
+										"reset"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "83"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"53-Z+47HW/rmB5xPjHhNwTjiJdk+P0\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 12:11:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"\": 0\n        }\n    ],\n    \"message\": \"Withdrawal Password Reset Successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "user/status",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1OTY2MiwibmJmIjoxNzU1MjU5NjYyLCJqdGkiOiIxLTE3NTUyNTk2NjItZmxjdDNqb3ZjIiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI3MDQ2Mn0.tRk63i4RlpothARrbK7BAd1r2w7ljNckoPafwZkw10s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\":\"13\",\r\n    \"is_blocked\":0\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/user/status",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"status"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "user/status",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"user_id\":\"13\",\r\n    \"is_blocked\":1\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/user/status",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"status"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "138"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"8a-pCzrxMXQOCBcf+jz+lykF/dE5bQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 12:14:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"SuccessMessage\": \"Success: User status updated\",\n            \"AffectedUsers\": 7\n        }\n    ],\n    \"message\": \"User Status Changed Successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "users",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1OTY2MiwibmJmIjoxNzU1MjU5NjYyLCJqdGkiOiIxLTE3NTUyNTk2NjItZmxjdDNqb3ZjIiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI3MDQ2Mn0.tRk63i4RlpothARrbK7BAd1r2w7ljNckoPafwZkw10s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/users?type=Super%20Master",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"users"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "Super%20Master"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "users",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/users?type=Super%20Master",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"users"
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "Super%20Master"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "602"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"25a-4AOkaiJL101mVqEa/WyOFobO8YY\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 12:22:35 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 37,\n            \"role_id\": 1,\n            \"parent_id\": 1,\n            \"first_name\": \"Narayani\",\n            \"last_name\": \"Foster\",\n            \"username\": \"Naru7\",\n            \"email\": \"narayani@example.com\",\n            \"is_blocked\": false,\n            \"is_locked\": false,\n            \"parent_username\": \"johndoe\",\n            \"balance\": 90046,\n            \"exposure\": 0,\n            \"profit_loss\": 46,\n            \"created_on\": \"2025-08-04T13:31:46.003Z\"\n        },\n        {\n            \"id\": 13,\n            \"role_id\": 1,\n            \"parent_id\": 1,\n            \"first_name\": \"John\",\n            \"last_name\": \"Doe Jr\",\n            \"username\": \"JD_Jr\",\n            \"email\": \"johnjr@example.com\",\n            \"is_blocked\": false,\n            \"is_locked\": false,\n            \"parent_username\": \"johndoe\",\n            \"balance\": 80244,\n            \"exposure\": 0,\n            \"profit_loss\": 3,\n            \"created_on\": \"2025-07-10T14:57:05.793Z\"\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "users/blocked?order_by=created_on&order_direction=ASC",
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI1OTY2MiwibmJmIjoxNzU1MjU5NjYyLCJqdGkiOiIxLTE3NTUyNTk2NjItZmxjdDNqb3ZjIiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI3MDQ2Mn0.tRk63i4RlpothARrbK7BAd1r2w7ljNckoPafwZkw10s",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": {
+							"raw": "http://localhost:3000/users/blocked",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"users",
+								"blocked"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "users/blocked?order_by=created_on&order_direction=ASC",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": {
+									"raw": "http://localhost:3000/users/blocked",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"users",
+										"blocked"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "319"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"13f-FDGpZh2ZW9YlyUY1uIuKNfvCqjQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 12:28:23 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 13,\n            \"role_id\": 1,\n            \"parent_id\": 1,\n            \"parent_username\": \"johndoe\",\n            \"username\": \"JD_Jr\",\n            \"first_name\": \"John\",\n            \"last_name\": \"Doe Jr\",\n            \"email\": \"johnjr@example.com\",\n            \"is_blocked\": false,\n            \"is_locked\": true,\n            \"balance\": 80244,\n            \"exposure\": 0,\n            \"profit_loss\": 3,\n            \"created_on\": \"2025-07-10T14:57:05.793Z\"\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "user/buttons",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjMiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI2MDk2NiwibmJmIjoxNzU1MjYwOTY2LCJqdGkiOiIzLTE3NTUyNjA5NjYtYXJ5amNtNWoyIiwiaWQiOjMsInVzZXJuYW1lIjoiZXZlZm9zdGVyIiwiZW1haWwiOiJldmVmb3N0ZXJAZXhhbXBsZS5jb20iLCJyb2xlX2lkIjozLCJleHAiOjE3NTUyNzE3NjZ9.aWMMQ5y3btN0c840_41DKNcnZUUuPP62ZhbVrpw64Hw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/user/buttons",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"buttons"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "user/buttons",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/user/buttons",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"buttons"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "899"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"383-N6j3jz4t+sojXSyjCIDTeAI987w\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 12:29:42 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 17,\n            \"user_id\": 3,\n            \"title\": \"100\",\n            \"amount\": \"100\",\n            \"created_on\": \"2025-06-11T17:21:35.010Z\",\n            \"bet_allow\": 1\n        },\n        {\n            \"id\": 18,\n            \"user_id\": 3,\n            \"title\": \"200\",\n            \"amount\": \"200\",\n            \"created_on\": \"2025-06-11T17:21:35.010Z\",\n            \"bet_allow\": 1\n        },\n        {\n            \"id\": 19,\n            \"user_id\": 3,\n            \"title\": \"500\",\n            \"amount\": \"500\",\n            \"created_on\": \"2025-06-11T17:21:35.010Z\",\n            \"bet_allow\": 1\n        },\n        {\n            \"id\": 20,\n            \"user_id\": 3,\n            \"title\": \"1000\",\n            \"amount\": \"1000\",\n            \"created_on\": \"2025-06-11T17:21:35.010Z\",\n            \"bet_allow\": 1\n        },\n        {\n            \"id\": 21,\n            \"user_id\": 3,\n            \"title\": \"2000\",\n            \"amount\": \"2000\",\n            \"created_on\": \"2025-06-11T17:21:35.010Z\",\n            \"bet_allow\": 1\n        },\n        {\n            \"id\": 22,\n            \"user_id\": 3,\n            \"title\": \"5000\",\n            \"amount\": \"5000\",\n            \"created_on\": \"2025-06-11T17:21:35.010Z\",\n            \"bet_allow\": 1\n        },\n        {\n            \"id\": 23,\n            \"user_id\": 3,\n            \"title\": \"10000\",\n            \"amount\": \"10000\",\n            \"created_on\": \"2025-06-11T17:21:35.010Z\",\n            \"bet_allow\": 1\n        },\n        {\n            \"id\": 24,\n            \"user_id\": 3,\n            \"title\": \"25000\",\n            \"amount\": \"25000\",\n            \"created_on\": \"2025-06-11T17:21:35.010Z\",\n            \"bet_allow\": 1\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "user/buttons",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjMiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI2MDk2NiwibmJmIjoxNzU1MjYwOTY2LCJqdGkiOiIzLTE3NTUyNjA5NjYtYXJ5amNtNWoyIiwiaWQiOjMsInVzZXJuYW1lIjoiZXZlZm9zdGVyIiwiZW1haWwiOiJldmVmb3N0ZXJAZXhhbXBsZS5jb20iLCJyb2xlX2lkIjozLCJleHAiOjE3NTUyNzE3NjZ9.aWMMQ5y3btN0c840_41DKNcnZUUuPP62ZhbVrpw64Hw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"title1\":\" 100\",\r\n    \"amount1\":\"100\",\r\n    \"title2\":\"200\",\r\n    \"amount2\":\"200\",\r\n    \"title3\":\"300\",\r\n    \"amount3\":\"300\",\r\n    \"title4\":\"400\",\r\n    \"amount4\":\"400\",\r\n    \"title5\":\"500\",\r\n    \"amount5\":\"500\",\r\n    \"title6\":\"600\",\r\n    \"amount6\":\"600\",\r\n    \"title7\":\"700\",\r\n    \"amount7\":\"700\",\r\n    \"title8\":\"800\",\r\n    \"amount8\":\"800\"\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/buttons",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"buttons"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "user/buttons",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"title1\":\" 100\",\r\n    \"amount1\":\"100\",\r\n    \"title2\":\"200\",\r\n    \"amount2\":\"200\",\r\n    \"title3\":\"300\",\r\n    \"amount3\":\"300\",\r\n    \"title4\":\"400\",\r\n    \"amount4\":\"400\",\r\n    \"title5\":\"500\",\r\n    \"amount5\":\"500\",\r\n    \"title6\":\"600\",\r\n    \"amount6\":\"600\",\r\n    \"title7\":\"700\",\r\n    \"amount7\":\"700\",\r\n    \"title8\":\"800\",\r\n    \"amount8\":\"800\"\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/buttons",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"buttons"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "72"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"48-GSgUMlpjOrP8kt9qqDHRVZFaN44\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 12:33:05 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"\": 0\n        }\n    ],\n    \"message\": \"Button Updated Successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "user/password",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjMiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI2MDk2NiwibmJmIjoxNzU1MjYwOTY2LCJqdGkiOiIzLTE3NTUyNjA5NjYtYXJ5amNtNWoyIiwiaWQiOjMsInVzZXJuYW1lIjoiZXZlZm9zdGVyIiwiZW1haWwiOiJldmVmb3N0ZXJAZXhhbXBsZS5jb20iLCJyb2xlX2lkIjozLCJleHAiOjE3NTUyNzE3NjZ9.aWMMQ5y3btN0c840_41DKNcnZUUuPP62ZhbVrpw64Hw",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"old_password\":\"Luc76TTOYCi5BCyGa3ep4A==\",\r\n    \"password\" : \"M9w0/sAhJfQHJszswup2kw==\"\r\n    \r\n\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/user/password",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"user",
+								"password"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "user/password",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"old_password\":\"Luc76TTOYCi5BCyGa3ep4A==\",\r\n    \"password\" : \"M9w0/sAhJfQHJszswup2kw==\"\r\n    \r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/user/password",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"user",
+										"password"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "109"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"6d-5uwBpbtHHq436XeB1aDj2wmxLFM\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 12:34:22 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"message\": \"Password updated successfully\"\n    },\n    \"message\": \"Password Updated Successfully\"\n}"
+						}
+					]
+				},
+				{
+					"name": "user/profile",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI2MTg4OSwibmJmIjoxNzU1MjYxODg5LCJqdGkiOiIxLTE3NTUyNjE4ODktdmcxeHZjbW1pIiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI3MjY4OX0.tS6oF05vvtTdu72cDaM_Lnysgy7JLV86RIdT-IfqOko",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/user/profile",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"user",
+								"profile"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "user/profile",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/user/profile",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"user",
+										"profile"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "207"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"cf-0XiIUSEf49xzuYiWSteJQIqIdMA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 12:45:03 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"User_Balance\": 799870,\n            \"User_FirstName\": \"John\",\n            \"User_LastName\": \"Doe\",\n            \"User_username\": \"johndoe\",\n            \"Total_Profit_Loss\": -49,\n            \"Total_Exposure\": 0\n        }\n    ],\n    \"message\": \"Profile Retrieved Successfully\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "bet",
+			"item": [
+				{
+					"name": "/bet/unsettled/master",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI2MTg4OSwibmJmIjoxNzU1MjYxODg5LCJqdGkiOiIxLTE3NTUyNjE4ODktdmcxeHZjbW1pIiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI3MjY4OX0.tS6oF05vvtTdu72cDaM_Lnysgy7JLV86RIdT-IfqOko",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n      \"user_id\":2,\r\n      \"role_id\":2,\r\n      \"event_type_id\":4,\r\n      \"start_date\":\"2025-08-10\",\r\n      \"end_date\":\"2025-08-15\",\r\n      \"min_stake\":100,\r\n      \"max_stake\":200\r\n    \r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/bet/unsettled/master",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"bet",
+								"unsettled",
+								"master"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/bet/unsettled/master",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n      \"user_id\":2,\r\n      \"role_id\":2,\r\n      \"event_type_id\":4,\r\n      \"start_date\":\"2025-08-10\",\r\n      \"end_date\":\"2025-08-15\",\r\n      \"min_stake\":100,\r\n      \"max_stake\":200\r\n    \r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/bet/unsettled/master",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"bet",
+										"unsettled",
+										"master"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "527"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"20f-V49CCuJEV+q8mTTlJxZf2NTSeVg\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 12:52:12 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 2115,\n            \"user_id\": 3,\n            \"username\": \"evefoster\",\n            \"status_name\": \"P\",\n            \"type\": \"MO\",\n            \"event_id\": 34614729,\n            \"event_name\": \"Yorkshire v Somerset\",\n            \"event_type_name\": \"Cricket\",\n            \"odd\": 2.62,\n            \"nation\": \"Yorkshire\",\n            \"stake\": 100,\n            \"status_id\": 1,\n            \"comm_in\": 0,\n            \"comm_out\": 0,\n            \"potential_payout\": 162,\n            \"potential_loss\": 100,\n            \"is_back\": true,\n            \"ip\": \"localhost\",\n            \"balance_after_bet\": 0,\n            \"round_id\": null,\n            \"game_id\": null,\n            \"game_code\": null,\n            \"order_id\": null,\n            \"runner_id\": \"655\",\n            \"match_date\": null,\n            \"created_on\": \"2025-08-14T17:13:52.090Z\"\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "bet/event",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI2MTg4OSwibmJmIjoxNzU1MjYxODg5LCJqdGkiOiIxLTE3NTUyNjE4ODktdmcxeHZjbW1pIiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI3MjY4OX0.tS6oF05vvtTdu72cDaM_Lnysgy7JLV86RIdT-IfqOko",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"event_id\":\"34611218\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/bet/event",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bet",
+								"event"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "bet/event",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"event_id\":\"34611218\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/bet/event",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"bet",
+										"event"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "1241"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"4d9-NfsNhhXJCEVPBBB37qxj1wrIBQQ\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 13:04:14 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"user_id\": 3,\n            \"username\": \"evefoster\",\n            \"type\": \"MO\",\n            \"event_id\": 34611218,\n            \"odd\": 2.22,\n            \"nation\": \"London Spirit\",\n            \"stake\": 600,\n            \"profit_loss\": null,\n            \"runner_id\": \"26354928\",\n            \"created_on\": \"2025-08-14T17:22:19.570Z\"\n        },\n        {\n            \"user_id\": 3,\n            \"username\": \"evefoster\",\n            \"type\": \"MO\",\n            \"event_id\": 34611218,\n            \"odd\": 2.24,\n            \"nation\": \"London Spirit\",\n            \"stake\": 600,\n            \"profit_loss\": null,\n            \"runner_id\": \"26354928\",\n            \"created_on\": \"2025-08-14T17:22:37.080Z\"\n        }\n      \n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "bet/unsettled",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjMiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI2MzQwMSwibmJmIjoxNzU1MjYzNDAxLCJqdGkiOiIzLTE3NTUyNjM0MDEtZnpvczN5MmR0IiwiaWQiOjMsInVzZXJuYW1lIjoiZXZlZm9zdGVyIiwiZW1haWwiOiJldmVmb3N0ZXJAZXhhbXBsZS5jb20iLCJyb2xlX2lkIjozLCJleHAiOjE3NTUyNzQyMDF9.JYV_UFUF2bI00GJWNNGJkOoL_sA2bm_x0ZJyPR-s2yk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"start_date\": \"2025-08-10\",\r\n    \"end_date\": \"2025-08-16\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:3000/bet/unsettled",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"bet",
+								"unsettled"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "bet/unsettled",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"start_date\": \"2025-08-10\",\r\n    \"end_date\": \"2025-08-16\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "http://localhost:3000/bet/unsettled",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"bet",
+										"unsettled"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "4741"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"1285-Tgs3G4a70m/WllRmGi2O1Ujf0yA\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 13:15:52 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"id\": 2123,\n            \"user_id\": 3,\n            \"status_name\": \"P\",\n            \"type\": \"MO\",\n            \"event_id\": 34611218,\n            \"event_name\": \"London Spirit v Trent Rockets\",\n            \"event_type_name\": \"Cricket\",\n            \"odd\": 1.8,\n            \"fancy_odd\": null,\n            \"nation\": \"Trent Rockets\",\n            \"stake\": 1500,\n            \"status_id\": 1,\n            \"comm_in\": 0,\n            \"comm_out\": 0,\n            \"potential_payout\": 1200,\n            \"is_back\": true,\n            \"ip\": \"localhost\",\n            \"balance_after_bet\": null,\n            \"round_id\": null,\n            \"game_id\": null,\n            \"game_code\": null,\n            \"order_id\": null,\n            \"runner_id\": \"26354925\",\n            \"match_date\": null,\n            \"created_on\": \"2025-08-14T17:23:08.723Z\"\n        },\n        {\n            \"id\": 2122,\n            \"user_id\": 3,\n            \"status_name\": \"P\",\n            \"type\": \"MO\",\n            \"event_id\": 34611218,\n            \"event_name\": \"London Spirit v Trent Rockets\",\n            \"event_type_name\": \"Cricket\",\n            \"odd\": 2.22,\n            \"fancy_odd\": null,\n            \"nation\": \"London Spirit\",\n            \"stake\": 1200,\n            \"status_id\": 1,\n            \"comm_in\": 0,\n            \"comm_out\": 0,\n            \"potential_payout\": 1464,\n            \"is_back\": true,\n            \"ip\": \"localhost\",\n            \"balance_after_bet\": null,\n            \"round_id\": null,\n            \"game_id\": null,\n            \"game_code\": null,\n            \"order_id\": null,\n            \"runner_id\": \"26354928\",\n            \"match_date\": null,\n            \"created_on\": \"2025-08-14T17:22:57.930Z\"\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/bet",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjMiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI2MzQwMSwibmJmIjoxNzU1MjYzNDAxLCJqdGkiOiIzLTE3NTUyNjM0MDEtZnpvczN5MmR0IiwiaWQiOjMsInVzZXJuYW1lIjoiZXZlZm9zdGVyIiwiZW1haWwiOiJldmVmb3N0ZXJAZXhhbXBsZS5jb20iLCJyb2xlX2lkIjozLCJleHAiOjE3NTUyNzQyMDF9.JYV_UFUF2bI00GJWNNGJkOoL_sA2bm_x0ZJyPR-s2yk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"user_id\": 3,\r\n    \"type\": \"MO\",\r\n    \"market_type_name\": \"MatchOdds\",\r\n    \"event_id\": 34481499,\r\n    \"event_type_id\": 1,\r\n    \"event_name\": \"Girona v Rayo Vallecano\",\r\n    \"odd\": \"3.45\",\r\n    \"nation\": \"Rayo Vallecano\",\r\n    \"stake\": 100,\r\n    \"is_back\": true,\r\n    \"ip\": \"localhost\",\r\n    \"runner_id\": \"10779\",\r\n    \"runner_name\": \"Rayo Vallecano\",\r\n    \"market_id\": \"1.245321682\",\r\n    \"betting_type\": \"ODDS\",\r\n    \"runner_count\": 3\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/bet",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bet"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/bet",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"event_id\": 34320359,\r\n    \"event_name\": \"South Africa v Australia\",\r\n    \"event_type_id\": 4,\r\n    \"ip\": \"127.0.0.1\",\r\n    \"is_back\": false,\r\n    \"market_id\": \"1.243784552\",\r\n    \"market_type_name\": \"MatchOdds\",\r\n    \"nation\": \"Australia\",\r\n    \"odd\": \"1.52\",\r\n    \"potential_payout\": null,\r\n    \"runner_id\": \"16606\",\r\n    \"runner_name\": \"Australia\",\r\n    \"stake\": 100,\r\n    \"type\": \"MO\",\r\n    \"betting_type\":\"ODDS\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/bet",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"bet"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "245"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"f5-iE3WEMr/3BTyo9AKpzc/3XOyNik\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 13:23:59 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"id\": 3,\n        \"user_id\": 3,\n        \"balance\": 1957,\n        \"exposure\": 52,\n        \"profit_loss\": 29,\n        \"upline\": 0,\n        \"created_on\": \"2025-06-11T17:21:35.017Z\",\n        \"created_by\": \"2\",\n        \"modified_on\": \"2025-08-15T17:23:59.773Z\",\n        \"modified_by\": \"evefoster\"\n    },\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "bet/history/:eventid",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjMiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI2MzQwMSwibmJmIjoxNzU1MjYzNDAxLCJqdGkiOiIzLTE3NTUyNjM0MDEtZnpvczN5MmR0IiwiaWQiOjMsInVzZXJuYW1lIjoiZXZlZm9zdGVyIiwiZW1haWwiOiJldmVmb3N0ZXJAZXhhbXBsZS5jb20iLCJyb2xlX2lkIjozLCJleHAiOjE3NTUyNzQyMDF9.JYV_UFUF2bI00GJWNNGJkOoL_sA2bm_x0ZJyPR-s2yk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/bet/history/34611218",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bet",
+								"history",
+								"34611218"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "bet/history/:eventid",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/bet/history/34611218",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"bet",
+										"history",
+										"34611218"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "2152"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"868-nJQ/nrmc+0fJqDLGR5vgWoBtR+E\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 13:44:21 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [
+								{
+									"expires": "Invalid Date"
+								}
+							],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"bet_id\": 2123,\n            \"type\": \"MO\",\n            \"event_id\": 34611218,\n            \"event_name\": \"London Spirit v Trent Rockets\",\n            \"event_type_name\": \"Cricket\",\n            \"odd\": 1.8,\n            \"fancy_odd\": null,\n            \"nation\": \"Trent Rockets\",\n            \"stake\": 1500,\n            \"status_name\": \"P\",\n            \"profit_loss\": null,\n            \"potential_payout\": 1200,\n            \"is_back\": true,\n            \"runner_id\": \"26354925\",\n            \"market_id\": \"1.246562921\",\n            \"created_on\": \"2025-08-14T17:23:08.723Z\"\n        },\n        {\n            \"bet_id\": 2122,\n            \"type\": \"MO\",\n            \"event_id\": 34611218,\n            \"event_name\": \"London Spirit v Trent Rockets\",\n            \"event_type_name\": \"Cricket\",\n            \"odd\": 2.22,\n            \"fancy_odd\": null,\n            \"nation\": \"London Spirit\",\n            \"stake\": 1200,\n            \"status_name\": \"P\",\n            \"profit_loss\": null,\n            \"potential_payout\": 1464,\n            \"is_back\": true,\n            \"runner_id\": \"26354928\",\n            \"market_id\": \"1.246562921\",\n            \"created_on\": \"2025-08-14T17:22:57.930Z\"\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "bet/settle",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjEiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI2NTU0NiwibmJmIjoxNzU1MjY1NTQ2LCJqdGkiOiIxLTE3NTUyNjU1NDYtb3k5N2RudjdtIiwiaWQiOjEsInVzZXJuYW1lIjoiam9obmRvZSIsImVtYWlsIjoiam9obkBleGFtcGxlLmNvbSIsInJvbGVfaWQiOjEsImV4cCI6MTc1NTI3NjM0Nn0.obBWr_J0DzTTqywCSTzQqdCUbSvItK0JauBq_FOXZE0",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"market_id\": \"8.888125383\",\r\n    \"winner_id\":\"268630\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/bet/settle",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bet",
+								"settle"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "bet/settle",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"market_id\": \"1.246562921\",\r\n    \"winner_id\":\"26354925\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{url}}/bet/settle",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"bet",
+										"settle"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "90"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"5a-WyS8KNpcTLv8xdC2GBxNzTNJSyc\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 13:45:58 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"Result\": \"Settlement completed successfully\"\n    },\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "bet/exposure",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJqYWNrcG90LWFwaSIsInN1YiI6IjMiLCJhdWQiOiJqYWNrcG90LWFwaS11c2VycyIsImlhdCI6MTc1NTI2NTY3NSwibmJmIjoxNzU1MjY1Njc1LCJqdGkiOiIzLTE3NTUyNjU2NzUtdzI3d3M3MmlzIiwiaWQiOjMsInVzZXJuYW1lIjoiZXZlZm9zdGVyIiwiZW1haWwiOiJldmVmb3N0ZXJAZXhhbXBsZS5jb20iLCJyb2xlX2lkIjozLCJleHAiOjE3NTUyNzY0NzV9.9uJOTsvgQUm_jksb2ob6CoVTq6Ol4-fP-9gBhidspWE",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{url}}/bet/exposure",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"bet",
+								"exposure"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "bet/exposure",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Accept",
+										"value": "application/json",
+										"type": "text"
+									}
+								],
+								"url": {
+									"raw": "{{url}}/bet/exposure",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"bet",
+										"exposure"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": null,
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "239"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"ef-i8sxB83FREW63cNcoiELLXmnvQM\""
+								},
+								{
+									"key": "Date",
+									"value": "Fri, 15 Aug 2025 13:48:07 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": [\n        {\n            \"event_type\": \"Cricket\",\n            \"event_name\": \"South Africa v Australia\",\n            \"expose\": -52,\n            \"event_id\": 34320359\n        },\n        {\n            \"event_type\": \"Cricket\",\n            \"event_name\": \"Yorkshire v Somerset\",\n            \"expose\": -2400,\n            \"event_id\": 34614729\n        }\n    ],\n    \"message\": \"Success\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Health",
+			"item": [
+				{
+					"name": "/health",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/health",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"health"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/health",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{url}}/health",
+									"host": [
+										"{{url}}"
+									],
+									"path": [
+										"health"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "98"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"62-I7qqztoOCXpcDD2hvXotwcFbMc0\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Aug 2025 11:15:15 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"status\": \"UP\",\n        \"timestamp\": \"2025-08-18T11:15:15.998Z\"\n    },\n    \"message\": \"Success\"\n}"
+						}
+					]
+				},
+				{
+					"name": "/health/details",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:3000/health/details",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "3000",
+							"path": [
+								"health",
+								"details"
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "/health/details",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "http://localhost:3000/health/details",
+									"protocol": "http",
+									"host": [
+										"localhost"
+									],
+									"port": "3000",
+									"path": [
+										"health",
+										"details"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "",
+							"header": [
+								{
+									"key": "X-Powered-By",
+									"value": "Express"
+								},
+								{
+									"key": "Access-Control-Allow-Origin",
+									"value": "*"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Content-Length",
+									"value": "600"
+								},
+								{
+									"key": "ETag",
+									"value": "W/\"258-yb9xxr7s47rjZVg+HOz9NFYby50\""
+								},
+								{
+									"key": "Date",
+									"value": "Mon, 18 Aug 2025 11:15:43 GMT"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "Keep-Alive",
+									"value": "timeout=5"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"data\": {\n        \"status\": \"UP\",\n        \"timestamp\": \"2025-08-18T11:15:43.073Z\",\n        \"application\": {\n            \"version\": \"1.0.0\",\n            \"environment\": \"development\",\n            \"nodeVersion\": \"v22.7.0\",\n            \"uptime\": \"917 seconds\"\n        },\n        \"dependencies\": {\n            \"database\": {\n                \"status\": \"UP\",\n                \"message\": \"Database connection successful\"\n            },\n            \"externalServices\": {\n                \"event_api\": \"DOWN\"\n            }\n        },\n        \"system\": {\n            \"memory\": {\n                \"total\": \"15819 MB\",\n                \"free\": \"1489 MB\",\n                \"used\": \"14331 MB\",\n                \"usagePercentage\": \"91%\",\n                \"processUsage\": {\n                    \"rss\": \"50 MB\",\n                    \"heapUsed\": \"36 MB\",\n                    \"heapTotal\": \"39 MB\"\n                }\n            },\n            \"cpu\": {\n                \"usage\": \"16%\",\n                \"cores\": 14,\n                \"model\": \"Intel(R) Core(TM) Ultra 7 155U\"\n            },\n            \"disk\": \"C: 201/953GB (21%)\"\n        }\n    },\n    \"message\": 200\n}"
+						}
+					]
+				}
+			]
+		}
+	]
+}
