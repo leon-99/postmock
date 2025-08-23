@@ -10,7 +10,7 @@
 [![GitHub issues](https://img.shields.io/github/issues/leon-99/postmock.svg?style=flat-square)](https://github.com/leon-99/postmock/issues)
 ---
 
-**PostMock** is a powerful CLI tool that instantly generates mock API servers from your existing Postman collections or OpenAPI specifications. Perfect for frontend development, testing, and prototyping when you need a working API server without waiting for backend implementation.
+**PostMock** is a powerful interactive CLI tool that instantly generates mock API servers from your existing Postman collections or OpenAPI specifications. Perfect for frontend development, testing, and prototyping when you need a working API server without waiting for backend implementation.
 
 ## ✨ Features
 
@@ -23,6 +23,7 @@
 - ⏱️ **Delay Simulation** - Simulate network latency
 - 🐳 **Docker Ready** - Easy containerization
 - 📊 **Health Checks** - Built-in health monitoring endpoints
+- 💬 **Interactive CLI** - User-friendly prompts for all configuration options
 
 ## 🚀 Quick Start
 
@@ -34,50 +35,67 @@ npm install -g postmock
 
 ### Basic Usage
 
+Simply run the command and follow the interactive prompts:
+
 ```bash
-# From a Postman collection
-postmock collection.json
-
-# From an OpenAPI spec
-postmock swagger.yaml
-
-# With custom port
-postmock collection.json --port 5000
-
-# With dynamic responses and delay simulation
-postmock collection.json --dynamic --delay 100-300
+postmock
 ```
 
-## 📖 CLI Options
+The CLI will guide you through:
+- Selecting your input file (Postman collection or OpenAPI spec)
+- Choosing the port number
+- Setting up delay simulation
+- Enabling dynamic responses
+- Configuring CORS
+- Setting up hot reload
 
-| Option | Short | Description | Default |
-|--------|-------|-------------|---------|
-| `--port` | `-p` | Port to run server on | `4000` |
-| `--delay` | `-d` | Simulated delay range in ms (e.g., `100-300`) | `0` |
-| `--dynamic` | | Generate random responses every request | `false` |
-| `--cors` | | Enable CORS | `true` |
-| `--hot-reload` | | Watch for file changes and restart server | `false` |
+### Example Interactive Session
+
+```
+🚀 Welcome to PostMock!
+Generate mock API servers from Postman collections or OpenAPI specs
+
+? Enter the path to your Postman collection (.json) or OpenAPI spec (.yaml/.json) file: examples/postman.json
+? What port would you like to run the server on? 4000
+? Enter simulated delay range in milliseconds (e.g., 100-300) or press Enter for no delay: 0
+? Would you like to generate random responses for every request? No
+? Enable CORS for cross-origin requests? Yes
+? Enable hot reload to watch for file changes and restart server? No
+
+✅ Mock API server running on http://localhost:4000
+```
+
+## 📖 Configuration Options
+
+The interactive CLI will prompt you for the following settings:
+
+| Setting | Description | Default |
+|---------|-------------|---------|
+| **Input File** | Path to your Postman collection or OpenAPI spec | Required |
+| **Port** | Port to run server on | `4000` |
+| **Delay Simulation** | Simulated delay range in ms (e.g., `100-300`) | `0` (no delay) |
+| **Dynamic Responses** | Generate random responses every request | `false` |
+| **CORS** | Enable CORS for cross-origin requests | `true` |
+| **Hot Reload** | Watch for file changes and restart server | `false` |
 
 ## 🔧 Examples
 
 ### Simple Mock Server
 ```bash
-postmock my-api.json
+postmock
+# Follow prompts to select your API file
+# Server starts on default port 4000
 ```
-Creates a mock server on port 4000 using your API specification.
 
-### Advanced Configuration
+### Custom Configuration
 ```bash
-postmock openapi.yaml \
-  --port 5000 \
-  --dynamic \
-  --delay 200-500 \
-  --hot-reload
+postmock
+# Select your OpenAPI spec file
+# Choose port 5000
+# Enable dynamic responses
+# Set delay to 200-500ms
+# Enable hot reload
 ```
-- Runs on port 5000
-- Generates different responses each time
-- Simulates 200-500ms latency
-- Auto-restarts when the spec file changes
 
 ## 📁 Input File Formats
 
@@ -151,8 +169,6 @@ paths:
 - Consistent test environments
 - No external dependencies
 
-
-
 ## 🔌 API Endpoints
 
 ### Health Check
@@ -163,8 +179,6 @@ Returns server status and endpoint count.
 
 ### Mock Endpoints
 All endpoints defined in your input file will be automatically created with appropriate HTTP methods and paths.
-
-
 
 ## 🤝 Contributing
 
@@ -179,10 +193,6 @@ We welcome contributions! Please feel free to submit a Pull Request.
 ## 📄 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-
-
-
 
 ---
 
