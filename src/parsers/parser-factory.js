@@ -26,20 +26,20 @@ export class ParserFactory {
 
   /**
    * Check if data is a Postman collection
-   * @param {Object} data - Data to check
-   * @returns {boolean} True if Postman collection
+   * @param {Object} data - The data to check
+   * @returns {boolean} True if it's a Postman collection
    */
   static isPostmanCollection(data) {
-    return data.info && data.item && Array.isArray(data.item);
+    return !!(data && data.info && data.item && Array.isArray(data.item));
   }
 
   /**
    * Check if data is an OpenAPI specification
-   * @param {Object} data - Data to check
-   * @returns {boolean} True if OpenAPI spec
+   * @param {Object} data - The data to check
+   * @returns {boolean} True if it's an OpenAPI spec
    */
   static isOpenApiSpec(data) {
-    return data.openapi && data.paths;
+    return !!(data && (data.openapi || data.swagger) && data.paths);
   }
 
   /**
