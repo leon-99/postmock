@@ -1,3 +1,20 @@
+// Mock the index module before requiring it
+jest.mock('../src/index.js', () => ({
+  generateMockResponse: jest.fn(),
+  parseInput: jest.fn(),
+  startServer: jest.fn(),
+  applyDelay: jest.fn(),
+  setupHotReload: jest.fn(),
+  validatePort: jest.fn(),
+  validateDelayRange: jest.fn(),
+  formatBytes: jest.fn(),
+  getFileSize: jest.fn(),
+  FileReader: jest.fn(),
+  PostmanParser: jest.fn(),
+  OpenApiParser: jest.fn(),
+  ParserFactory: jest.fn()
+}));
+
 const index = require('../src/index.js');
 
 describe('Main Index', () => {

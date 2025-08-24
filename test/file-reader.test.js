@@ -179,7 +179,7 @@ describe('FileReader', () => {
       const content = '{"invalid": json}';
       
       expect(() => FileReader.parseFileContent(content, '.json', 'test.json'))
-        .toThrow('Failed to parse .json file: Invalid JSON: Expected double-quoted property name in JSON at position 30 (line 1 column 31)');
+        .toThrow('Failed to parse .json file: Invalid JSON: Unexpected token \'j\', "{"invalid": json}" is not valid JSON');
     });
 
     test('should throw error for invalid YAML', () => {

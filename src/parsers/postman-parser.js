@@ -40,7 +40,13 @@ export class PostmanParser {
    * @returns {boolean} True if valid Postman collection
    */
   isValidPostmanCollection(data) {
-    return data.info && data.item && Array.isArray(data.item);
+    // Must have data and info
+    if (!data || !data.info) return false;
+    
+    // If item property exists, it must be an array (can be missing)
+    if (data.hasOwnProperty('item') && !Array.isArray(data.item)) return false;
+    
+    return true;
   }
 
   /**
@@ -49,6 +55,8 @@ export class PostmanParser {
    * @param {string} basePath - Base path for current level
    */
   processItems(items, basePath = '') {
+    if (!items || !Array.isArray(items)) return;
+    
     items.forEach(item => {
       if (item.request) {
         this.processRequest(item, basePath);
@@ -69,13 +77,14 @@ export class PostmanParser {
     let path = this.extractPath(request);
     
     const examples = this.extractExamples(item);
+    const fullPath = this.buildFullPath(basePath, path);
     
     this.endpoints.push({
       method: method.toUpperCase(),
-      path: this.buildFullPath(basePath, path),
-      examples: examples.length > 0 ? examples : null,
+      path: fullPath,
+      examples: examples,
       schema: null, // Postman doesn't have schemas
-      description: item.name || `${method} ${path}`,
+      description: item.name || `${method} ${fullPath}`,
       originalRequest: request
     });
   }
@@ -114,7 +123,7 @@ export class PostmanParser {
   /**
    * Extract examples from responses
    * @param {Object} item - Collection item
-   * @returns {Array} Array of example responses
+   * @returns {Array|null} Array of example responses or null if none
    */
   extractExamples(item) {
     const examples = [];
@@ -132,7 +141,7 @@ export class PostmanParser {
       });
     }
     
-    return examples;
+    return examples.length > 0 ? examples : null;
   }
 
   /**

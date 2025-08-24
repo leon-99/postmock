@@ -14,15 +14,14 @@ describe('parseInput', () => {
     
     // Create a mock parser with the required methods
     mockParser = {
-      parse: jest.fn(),
+      parse: jest.fn().mockReturnValue({ endpoints: [] }),
       getEndpoints: jest.fn().mockReturnValue([])
     };
 
     // Ensure ParserFactory.createParser is properly mocked
-    ParserFactory.createParser = jest.fn();
+    ParserFactory.createParser = jest.fn().mockReturnValue(mockParser);
     
     FileReader.readFile.mockResolvedValue(mockData);
-    ParserFactory.createParser.mockReturnValue(mockParser);
   });
 
   const mockData = { info: { title: 'Test API' } };
@@ -34,7 +33,7 @@ describe('parseInput', () => {
       expect(FileReader.readFile).toHaveBeenCalledWith('test-file.json');
       expect(ParserFactory.createParser).toHaveBeenCalledWith(mockData);
       expect(mockParser.parse).toHaveBeenCalled();
-      expect(result).toBeDefined();
+      expect(result).toEqual({ endpoints: [] });
     });
   });
 
@@ -89,7 +88,7 @@ describe('parseInput', () => {
 
       expect(FileReader.readFile).toHaveBeenCalledWith('empty-file.json');
       expect(ParserFactory.createParser).toHaveBeenCalledWith(emptyData);
-      expect(result).toBeDefined();
+      expect(result).toEqual({ endpoints: [] });
     });
 
     test('should handle null file content', async () => {
@@ -100,7 +99,7 @@ describe('parseInput', () => {
 
       expect(FileReader.readFile).toHaveBeenCalledWith('null-file.json');
       expect(ParserFactory.createParser).toHaveBeenCalledWith(nullData);
-      expect(result).toBeDefined();
+      expect(result).toEqual({ endpoints: [] });
     });
   });
 });

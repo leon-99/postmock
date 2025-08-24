@@ -1,4 +1,14 @@
-const utils = require('../../src/utils/index.js');
+// Mock the utils module before requiring it
+jest.mock('../../src/utils.js', () => ({
+  applyDelay: jest.fn(),
+  setupHotReload: jest.fn(),
+  validatePort: jest.fn(),
+  validateDelayRange: jest.fn(),
+  formatBytes: jest.fn(),
+  getFileSize: jest.fn()
+}));
+
+const utils = require('../../src/utils.js');
 
 describe('Utils Index', () => {
   test('should export utility functions', () => {

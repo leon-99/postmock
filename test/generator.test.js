@@ -14,7 +14,8 @@ jest.mock('@faker-js/faker', () => ({
       userName: jest.fn(() => 'johndoe'),
       password: jest.fn(() => 'password123'),
       url: jest.fn(() => 'https://example.com'),
-      ip: jest.fn(() => '192.168.1.1')
+      ip: jest.fn(() => '192.168.1.1'),
+      email: jest.fn(() => 'user@example.com')
     },
     commerce: {
       productName: jest.fn(() => 'Test Product'),
@@ -37,13 +38,24 @@ jest.mock('@faker-js/faker', () => ({
       uuid: jest.fn(() => '123e4567-e89b-12d3-a456-426614174000')
     },
     date: {
-      recent: jest.fn(() => new Date('2023-01-01')),
+      recent: jest.fn(() => new Date('2024-01-01')),
       past: jest.fn(() => new Date('2022-01-01')),
       future: jest.fn(() => new Date('2024-01-01'))
     },
     helpers: {
       arrayElement: jest.fn((arr) => arr[0]),
       arrayElements: jest.fn((arr, count) => arr.slice(0, count || 1))
+    },
+    number: {
+      int: jest.fn((options) => {
+        if (options && options.min !== undefined && options.max !== undefined) {
+          return Math.floor((options.min + options.max) / 2);
+        }
+        return 42;
+      })
+    },
+    string: {
+      uuid: jest.fn(() => '123e4567-e89b-12d3-a456-426614174000')
     }
   }
 }));
@@ -64,7 +76,7 @@ describe('generateMockResponse', () => {
       const examples = [{ name: 'John' }, { name: 'Jane' }];
       const dynamic = false;
 
-      const result = generateMockResponse(schema, examples, dynamic);
+      const result = generateMockResponse(examples, schema, dynamic);
 
       expect(result).toEqual(examples[0]);
     });
@@ -79,7 +91,7 @@ describe('generateMockResponse', () => {
       const examples = [{ name: 'John' }, { name: 'Jane' }];
       const dynamic = true;
 
-      const result = generateMockResponse(schema, examples, dynamic);
+      const result = generateMockResponse(examples, schema, dynamic);
 
       expect(examples).toContainEqual(result);
     });
@@ -92,7 +104,7 @@ describe('generateMockResponse', () => {
         }
       };
 
-      const result = generateMockResponse(schema);
+      const result = generateMockResponse([], schema);
 
       expect(result).toHaveProperty('name');
       expect(typeof result.name).toBe('string');
@@ -109,7 +121,7 @@ describe('generateMockResponse', () => {
         }
       };
 
-      const result = generateMockResponse(schema);
+      const result = generateMockResponse(null, schema, false);
 
       expect(result).toHaveProperty('name');
       expect(result).toHaveProperty('age');
@@ -125,7 +137,7 @@ describe('generateMockResponse', () => {
         maxItems: 5
       };
 
-      const result = generateMockResponse(schema);
+      const result = generateMockResponse(null, schema, false);
 
       expect(Array.isArray(result)).toBe(true);
       expect(result.length).toBeGreaterThanOrEqual(2);
@@ -138,9 +150,9 @@ describe('generateMockResponse', () => {
       const numberSchema = { type: 'number' };
       const booleanSchema = { type: 'boolean' };
 
-      const stringResult = generateMockResponse(stringSchema);
-      const numberResult = generateMockResponse(numberSchema);
-      const booleanResult = generateMockResponse(booleanSchema);
+      const stringResult = generateMockResponse(null, stringSchema, false);
+      const numberResult = generateMockResponse(null, numberSchema, false);
+      const booleanResult = generateMockResponse(null, booleanSchema, false);
 
       expect(typeof stringResult).toBe('string');
       expect(typeof numberResult).toBe('number');
@@ -155,7 +167,7 @@ describe('generateMockResponse', () => {
         enum: ['red', 'green', 'blue']
       };
 
-      const result = generateMockResponse(schema);
+      const result = generateMockResponse(null, schema, false);
 
       expect(['red', 'green', 'blue']).toContain(result);
     });
@@ -166,7 +178,7 @@ describe('generateMockResponse', () => {
         format: 'email'
       };
 
-      const result = generateMockResponse(schema);
+      const result = generateMockResponse(null, schema, false);
 
       expect(result).toMatch(/^[^\s@]+@[^\s@]+\.[^\s@]+$/);
     });
@@ -177,7 +189,7 @@ describe('generateMockResponse', () => {
         format: 'date'
       };
 
-      const result = generateMockResponse(schema);
+      const result = generateMockResponse(null, schema, false);
 
       expect(result).toMatch(/^\d{4}-\d{2}-\d{2}$/);
     });
@@ -188,7 +200,7 @@ describe('generateMockResponse', () => {
         format: 'date-time'
       };
 
-      const result = generateMockResponse(schema);
+      const result = generateMockResponse(null, schema, false);
 
       expect(result).toMatch(/^\d{4}-\d{2}-\d{2}T\d{2}:\d{2}:\d{2}/);
     });
@@ -199,7 +211,7 @@ describe('generateMockResponse', () => {
         format: 'uuid'
       };
 
-      const result = generateMockResponse(schema);
+      const result = generateMockResponse(null, schema, false);
 
       expect(result).toMatch(/^[0-9a-f]{8}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{4}-[0-9a-f]{12}$/i);
     });
@@ -211,7 +223,7 @@ describe('generateMockResponse', () => {
         maximum: 20
       };
 
-      const result = generateMockResponse(schema);
+      const result = generateMockResponse(null, schema, false);
 
       expect(result).toBeGreaterThanOrEqual(10);
       expect(result).toBeLessThanOrEqual(20);
@@ -228,7 +240,7 @@ describe('generateMockResponse', () => {
         }
       };
 
-      const result = generateMockResponse(schema, [], true, '/users');
+      const result = generateMockResponse([], schema, true, '/users');
 
       expect(result).toHaveProperty('name');
       expect(result).toHaveProperty('email');
@@ -243,7 +255,7 @@ describe('generateMockResponse', () => {
         }
       };
 
-      const result = generateMockResponse(schema, [], true, '/posts');
+      const result = generateMockResponse([], schema, true, '/posts');
 
       expect(result).toHaveProperty('title');
       expect(result).toHaveProperty('content');
@@ -258,7 +270,7 @@ describe('generateMockResponse', () => {
         }
       };
 
-      const result = generateMockResponse(schema, [], true, '/products');
+      const result = generateMockResponse([], schema, true, '/products');
 
       expect(result).toHaveProperty('name');
       expect(result).toHaveProperty('price');
@@ -273,7 +285,7 @@ describe('generateMockResponse', () => {
         }
       };
 
-      const result = generateMockResponse(schema, [], true, '/auth');
+      const result = generateMockResponse([], schema, true, '/auth');
 
       expect(result).toHaveProperty('token');
       expect(result).toHaveProperty('expires');
@@ -287,8 +299,8 @@ describe('generateMockResponse', () => {
         }
       };
 
-      const getResult = generateMockResponse(schema, [], true, '/test', 'GET');
-      const postResult = generateMockResponse(schema, [], true, '/test', 'POST');
+      const getResult = generateMockResponse([], schema, true, '/test', 'GET');
+      const postResult = generateMockResponse([], schema, true, '/test', 'POST');
 
       expect(getResult).toBeDefined();
       expect(postResult).toBeDefined();
@@ -299,8 +311,8 @@ describe('generateMockResponse', () => {
     test('should generate different values when dynamic is true', () => {
       const schema = { type: 'string' };
 
-      const result1 = generateMockResponse(schema, [], true);
-      const result2 = generateMockResponse(schema, [], true);
+      const result1 = generateMockResponse([], schema, true);
+      const result2 = generateMockResponse([], schema, true);
 
       // Since we're mocking faker, results will be the same
       // In real scenarios, they would be different
@@ -316,8 +328,8 @@ describe('generateMockResponse', () => {
         maxItems: 10
       };
 
-      const result1 = generateMockResponse(schema, [], true);
-      const result2 = generateMockResponse(schema, [], true);
+      const result1 = generateMockResponse([], schema, true);
+      const result2 = generateMockResponse([], schema, true);
 
       expect(Array.isArray(result1)).toBe(true);
       expect(Array.isArray(result2)).toBe(true);
@@ -334,7 +346,7 @@ describe('generateMockResponse', () => {
       const schema = { type: 'string' };
       const examples = [];
 
-      const result = generateMockResponse(schema, examples);
+      const result = generateMockResponse(examples, schema, false);
 
       expect(result).toBeDefined();
       expect(typeof result).toBe('string');
@@ -347,7 +359,7 @@ describe('generateMockResponse', () => {
         }
       };
 
-      const result = generateMockResponse(schema);
+      const result = generateMockResponse(null, schema, false);
 
       expect(result).toBeDefined();
     });

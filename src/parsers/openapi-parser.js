@@ -42,7 +42,13 @@ export class OpenApiParser {
    * @returns {boolean} True if valid OpenAPI spec
    */
   isValidOpenApiSpec(data) {
-    return data.openapi && data.paths;
+    // Must have data and openapi
+    if (!data || !data.openapi) return false;
+    
+    // If paths property exists, it must be an object (can be null)
+    if (data.hasOwnProperty('paths') && typeof data.paths !== 'object') return false;
+    
+    return true;
   }
 
   /**
@@ -50,7 +56,7 @@ export class OpenApiParser {
    * @param {Object} paths - Paths object from OpenAPI spec
    */
   processPaths(paths) {
-    if (!paths) return;
+    if (!paths || typeof paths !== 'object') return;
 
     Object.entries(paths).forEach(([path, pathItem]) => {
       this.processPathItem(path, pathItem);
@@ -83,7 +89,7 @@ export class OpenApiParser {
     this.endpoints.push({
       method: method.toUpperCase(),
       path: path,
-      examples: examples.length > 0 ? examples : null,
+      examples: examples,
       schema: schema,
       description: operation.summary || operation.description || `${method.toUpperCase()} ${path}`,
       operationId: operation.operationId
@@ -102,12 +108,12 @@ export class OpenApiParser {
   /**
    * Extract examples from operation responses
    * @param {Object} operation - Operation object
-   * @returns {Array} Array of example responses
+   * @returns {Array|null} Array of example responses or null if none
    */
   extractExamples(operation) {
     const examples = [];
     
-    if (!operation.responses) return examples;
+    if (!operation.responses) return null;
 
     Object.values(operation.responses).forEach(response => {
       if (response.content && response.content['application/json']) {
@@ -127,7 +133,7 @@ export class OpenApiParser {
       }
     });
     
-    return examples;
+    return examples.length > 0 ? examples : null;
   }
 
   /**
