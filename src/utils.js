@@ -6,7 +6,8 @@ export function applyDelay(delayRange) {
     let maxDelay = 0;
     
     if (typeof delayRange === 'string') {
-      if (delayRange.includes('-')) {
+      if (delayRange.includes('-') && !delayRange.startsWith('-')) {
+        // Handle range format like "100-200" but not "-100" or "-100-200"
         [minDelay, maxDelay] = delayRange.split('-').map(Number);
       } else {
         minDelay = maxDelay = Number(delayRange);
@@ -15,11 +16,15 @@ export function applyDelay(delayRange) {
       minDelay = maxDelay = Number(delayRange);
     }
     
-    // Ensure valid delay values
-    if (isNaN(minDelay) || isNaN(maxDelay) || minDelay < 0 || maxDelay < 0) {
-      minDelay = maxDelay = 0;
+    // Ensure valid delay values - convert negative values to 0
+    if (isNaN(minDelay) || minDelay < 0) {
+      minDelay = 0;
+    }
+    if (isNaN(maxDelay) || maxDelay < 0) {
+      maxDelay = 0;
     }
     
+    // If both delays are 0, resolve immediately
     if (minDelay === 0 && maxDelay === 0) {
       resolve();
       return;
