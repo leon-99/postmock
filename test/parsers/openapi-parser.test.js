@@ -332,6 +332,24 @@ describe('OpenApiParser', () => {
       expect(parser.isValidOpenApiSpec(validSpec)).toBe(true);
     });
 
+    test('should return false when paths property exists but is not an object', () => {
+      const invalidSpec = {
+        openapi: '3.0.0',
+        paths: 'invalid-paths'
+      };
+
+      expect(parser.isValidOpenApiSpec(invalidSpec)).toBe(false);
+    });
+
+    test('should return false when paths property is a number', () => {
+      const invalidSpec = {
+        openapi: '3.0.0',
+        paths: 42
+      };
+
+      expect(parser.isValidOpenApiSpec(invalidSpec)).toBe(false);
+    });
+
     test('should return false for null spec', () => {
       expect(parser.isValidOpenApiSpec(null)).toBe(false);
     });
@@ -430,6 +448,56 @@ describe('OpenApiParser', () => {
       const result = parser.parse(mockData);
 
       expect(result.endpoints[0].operationId).toBeUndefined();
+    });
+
+    test('should use default name when info.title is missing', () => {
+      const mockData = {
+        openapi: '3.0.0',
+        paths: {
+          '/test': {
+            get: { summary: 'Test' }
+          }
+        }
+      };
+
+      const result = parser.parse(mockData);
+
+      expect(result.name).toBe('OpenAPI Spec');
+    });
+
+    test('should handle non-object paths argument in processPaths', () => {
+      expect(() => parser.processPaths('not-an-object')).not.toThrow();
+      expect(() => parser.processPaths(42)).not.toThrow();
+      expect(() => parser.processPaths(null)).not.toThrow();
+    });
+
+    test('should skip examples without value property in content.examples', () => {
+      const mockData = {
+        openapi: '3.0.0',
+        info: { title: 'Test API' },
+        paths: {
+          '/test': {
+            get: {
+              responses: {
+                '200': {
+                  content: {
+                    'application/json': {
+                      examples: {
+                        withValue: { value: { id: 1 } },
+                        withoutValue: { summary: 'No value here' }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      };
+
+      const result = parser.parse(mockData);
+
+      expect(result.endpoints[0].examples).toEqual([{ id: 1 }]);
     });
   });
 });

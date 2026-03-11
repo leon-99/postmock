@@ -260,6 +260,12 @@ describe('generateMockResponse', () => {
       expect(result).toBe('2024-01-01');
     });
 
+    test('should handle string with date format in dynamic mode', () => {
+      const schema = { type: 'string', format: 'date' };
+      const result = generateMockResponse(null, schema, true);
+      expect(typeof result).toBe('string');
+    });
+
     test('should handle string with date-time format', () => {
       const schema = {
         type: 'string',
@@ -270,6 +276,12 @@ describe('generateMockResponse', () => {
       expect(result).toBe('2024-01-01T00:00:00.000Z');
     });
 
+    test('should handle string with date-time format in dynamic mode', () => {
+      const schema = { type: 'string', format: 'date-time' };
+      const result = generateMockResponse(null, schema, true);
+      expect(typeof result).toBe('string');
+    });
+
     test('should handle string with uuid format', () => {
       const schema = {
         type: 'string',
@@ -278,6 +290,12 @@ describe('generateMockResponse', () => {
 
       const result = generateMockResponse(null, schema, false);
       expect(result).toBe('123e4567-e89b-12d3-a456-426614174000');
+    });
+
+    test('should handle string with uuid format in dynamic mode', () => {
+      const schema = { type: 'string', format: 'uuid' };
+      const result = generateMockResponse(null, schema, true);
+      expect(typeof result).toBe('string');
     });
 
     test('should handle string without format', () => {
@@ -477,6 +495,59 @@ describe('generateMockResponse', () => {
       const request = {};
       const result = generateMockResponse([], null, true, request);
       expect(result).toBeDefined();
+    });
+
+    test('should generate user mock for user path with dynamic=false', () => {
+      const request = { path: '/users' };
+      const result = generateMockResponse([], null, false, request);
+      expect(result).toHaveProperty('id', 1);
+      expect(result).toHaveProperty('username', 'johndoe');
+      expect(result).toHaveProperty('email', 'john@example.com');
+    });
+
+    test('should generate post mock for post path with dynamic=false', () => {
+      const request = { path: '/posts' };
+      const result = generateMockResponse([], null, false, request);
+      expect(result).toHaveProperty('id', 1);
+      expect(result).toHaveProperty('title', 'Sample Post Title');
+    });
+
+    test('should generate product mock for product path with dynamic=false', () => {
+      const request = { path: '/products' };
+      const result = generateMockResponse([], null, false, request);
+      expect(result).toHaveProperty('id', 1);
+      expect(result).toHaveProperty('name', 'Sample Product');
+      expect(result).toHaveProperty('price', 29.99);
+    });
+
+    test('should generate auth mock for auth path with dynamic=false', () => {
+      const request = { path: '/auth' };
+      const result = generateMockResponse([], null, false, request);
+      expect(result).toHaveProperty('token', 'sample-jwt-token-here');
+      expect(result).toHaveProperty('refreshToken', 'sample-refresh-token-here');
+      expect(result).toHaveProperty('expiresIn', 3600);
+    });
+
+    test('should generate POST response with dynamic=false', () => {
+      const request = { method: 'POST', path: '/test' };
+      const result = generateMockResponse([], null, false, request);
+      expect(result).toHaveProperty('id', 1);
+      expect(result).toHaveProperty('success', true);
+      expect(result).toHaveProperty('timestamp', '2024-01-01T00:00:00.000Z');
+    });
+
+    test('should generate PUT response with dynamic=false', () => {
+      const request = { method: 'PUT', path: '/test' };
+      const result = generateMockResponse([], null, false, request);
+      expect(result).toHaveProperty('id', 1);
+      expect(result).toHaveProperty('success', true);
+    });
+
+    test('should generate DELETE response with dynamic=false', () => {
+      const request = { method: 'DELETE', path: '/test' };
+      const result = generateMockResponse([], null, false, request);
+      expect(result).toHaveProperty('success', true);
+      expect(result).toHaveProperty('timestamp', '2024-01-01T00:00:00.000Z');
     });
   });
 
@@ -914,6 +985,48 @@ describe('generateMockResponse', () => {
       // This tests the generateGenericValue function indirectly
       const result = generateMockResponse([], null, false);
       expect(result).toBeDefined();
+    });
+
+    test('should generate string when Math.random selects string type', () => {
+      jest.spyOn(Math, 'random').mockReturnValue(0); // index 0 → 'string'
+      const result = generateMockResponse(null, { type: 'unknown_type' }, true);
+      expect(typeof result).toBe('string');
+      Math.random.mockRestore();
+    });
+
+    test('should generate number when Math.random selects number type', () => {
+      jest.spyOn(Math, 'random').mockReturnValue(0.21); // index 1 → 'number'
+      const result = generateMockResponse(null, { type: 'unknown_type' }, true);
+      expect(typeof result).toBe('number');
+      Math.random.mockRestore();
+    });
+
+    test('should generate boolean when Math.random selects boolean type', () => {
+      jest.spyOn(Math, 'random').mockReturnValue(0.41); // index 2 → 'boolean'
+      const result = generateMockResponse(null, { type: 'unknown_type' }, true);
+      expect(typeof result).toBe('boolean');
+      Math.random.mockRestore();
+    });
+
+    test('should generate object when Math.random selects object type', () => {
+      jest.spyOn(Math, 'random').mockReturnValue(0.61); // index 3 → 'object'
+      const result = generateMockResponse(null, { type: 'unknown_type' }, true);
+      expect(typeof result).toBe('object');
+      expect(result).not.toBeNull();
+      expect(Array.isArray(result)).toBe(false);
+      Math.random.mockRestore();
+    });
+
+    test('should generate array when Math.random selects array type', () => {
+      jest.spyOn(Math, 'random').mockReturnValue(0.81); // index 4 → 'array'
+      const result = generateMockResponse(null, { type: 'unknown_type' }, true);
+      expect(Array.isArray(result)).toBe(true);
+      Math.random.mockRestore();
+    });
+
+    test('should return sample_value for non-dynamic call', () => {
+      const result = generateMockResponse(null, { type: 'unknown_type' }, false);
+      expect(result).toBe('sample_value');
     });
   });
 });

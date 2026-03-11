@@ -472,6 +472,27 @@ describe('server', () => {
       expect(mockClose).toHaveBeenCalledWith(expect.any(Function));
     });
 
+    test('should call process.exit after server.close callback fires', async () => {
+      const inputFile = 'test.json';
+      const options = {
+        port: 3000,
+        cors: false,
+        delay: '0',
+        hotReload: false,
+        dynamic: false
+      };
+
+      // Make server.close immediately invoke its callback
+      mockClose.mockImplementation((cb) => cb());
+
+      await startServer(inputFile, options);
+
+      const sigintHandler = mockOn.mock.calls.find(call => call[0] === 'SIGINT')[1];
+      sigintHandler();
+
+      expect(process.exit).toHaveBeenCalledWith(0);
+    });
+
     test('should throw error when no endpoints are found', async () => {
       parseInput.mockResolvedValue({
         endpoints: []

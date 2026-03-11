@@ -642,5 +642,92 @@ describe('PostmanParser', () => {
 
       expect(result.endpoints[0].description).toBe('GET /test');
     });
+
+    test('should use default collection name when info.name is missing', () => {
+      const mockData = {
+        info: {},
+        item: [
+          {
+            name: 'Test',
+            request: {
+              method: 'GET',
+              url: { path: ['test'] }
+            }
+          }
+        ]
+      };
+
+      const result = parser.parse(mockData);
+
+      expect(result.name).toBe('Postman Collection');
+    });
+
+    test('should return "/" when url.path is not an array', () => {
+      const mockData = {
+        info: { name: 'Test Collection' },
+        item: [
+          {
+            name: 'Non-array path',
+            request: {
+              method: 'GET',
+              url: { path: 'api/users' }
+            }
+          }
+        ]
+      };
+
+      const result = parser.parse(mockData);
+
+      expect(result.endpoints[0].path).toBe('/');
+    });
+
+    test('should process nested folders and expose their requests', () => {
+      const mockData = {
+        info: { name: 'Nested Collection' },
+        item: [
+          {
+            name: 'Folder',
+            item: [
+              {
+                name: 'Nested Request',
+                request: {
+                  method: 'GET',
+                  url: { path: ['nested', 'route'] }
+                }
+              }
+            ]
+          }
+        ]
+      };
+
+      const result = parser.parse(mockData);
+
+      expect(result.endpoints).toHaveLength(1);
+      expect(result.endpoints[0].path).toBe('/nested/route');
+    });
+
+    test('should skip folder items where item property is not an array', () => {
+      const mockData = {
+        info: { name: 'Mixed Collection' },
+        item: [
+          {
+            name: 'Bad Folder',
+            item: 'not-an-array'
+          },
+          {
+            name: 'Valid Request',
+            request: {
+              method: 'GET',
+              url: { path: ['valid'] }
+            }
+          }
+        ]
+      };
+
+      const result = parser.parse(mockData);
+
+      expect(result.endpoints).toHaveLength(1);
+      expect(result.endpoints[0].path).toBe('/valid');
+    });
   });
 });

@@ -7,6 +7,7 @@ export default {
     '!src/**/__tests__/**',
   ],
   coverageDirectory: 'coverage',
+  coverageProvider: 'v8',
   coverageReporters: ['text', 'lcov', 'html'],
   setupFilesAfterEnv: ['<rootDir>/test/setup.js'],
   transform: {
