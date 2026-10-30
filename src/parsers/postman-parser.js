@@ -107,7 +107,11 @@ export class PostmanParser {
     if (!request.url || !request.url.path) {
       return '/';
     }
-    
+
+    if (!Array.isArray(request.url.path)) {
+      return '/';
+    }
+
     let path = request.url.path.join('/');
     
     // Handle path variables

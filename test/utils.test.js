@@ -192,6 +192,49 @@ describe('utils', () => {
       
       cleanup();
     });
+
+    test('should detect file modification and trigger callback when interval fires', () => {
+      fs.statSync
+        .mockReturnValueOnce({ mtime: { getTime: () => 1000 } }) // initial read
+        .mockReturnValueOnce({ mtime: { getTime: () => 2000 } }); // file changed
+
+      setupHotReload(mockFilePath, mockCallback);
+
+      // Invoke the stored interval callback directly
+      const intervalCallback = setInterval.mock.calls[0][0];
+      intervalCallback();
+
+      expect(mockCallback).toHaveBeenCalled();
+    });
+
+    test('should not trigger callback when file is not modified during interval', () => {
+      fs.statSync.mockReturnValue({ mtime: { getTime: () => 1000 } }); // same timestamp
+
+      setupHotReload(mockFilePath, mockCallback);
+
+      const intervalCallback = setInterval.mock.calls[0][0];
+      intervalCallback();
+
+      expect(mockCallback).not.toHaveBeenCalled();
+    });
+
+    test('should warn when fs.statSync throws inside interval callback', () => {
+      fs.statSync
+        .mockReturnValueOnce({ mtime: { getTime: () => 1000 } }) // initial read succeeds
+        .mockImplementationOnce(() => {
+          throw new Error('File deleted');
+        });
+
+      setupHotReload(mockFilePath, mockCallback);
+
+      const intervalCallback = setInterval.mock.calls[0][0];
+      intervalCallback();
+
+      expect(console.warn).toHaveBeenCalledWith(
+        'Warning: Could not check file for hot reload:',
+        'File deleted'
+      );
+    });
   });
 
   describe('validatePort', () => {
@@ -263,10 +306,8 @@ describe('utils', () => {
     });
 
     test('should handle very large numbers', () => {
-      // The function only supports up to GB, so very large numbers will show as GB
-      // When the index goes beyond 3, sizes[i] returns undefined
-      expect(formatBytes(1099511627776)).toBe('1 undefined');
-      expect(formatBytes(1125899906842624)).toBe('1 undefined');
+      expect(formatBytes(1099511627776)).toBe('1 TB');
+      expect(formatBytes(1125899906842624)).toBe('1 PB');
     });
 
     test('should handle very small numbers', () => {

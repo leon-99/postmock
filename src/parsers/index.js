@@ -3,6 +3,8 @@
  * Exports all parser-related classes and utilities
  */
 
-export { PostmanParser } from './postman-parser.js';
-export { OpenApiParser } from './openapi-parser.js';
-export { ParserFactory } from './parser-factory.js';
+import { PostmanParser } from './postman-parser.js';
+import { OpenApiParser } from './openapi-parser.js';
+import { ParserFactory } from './parser-factory.js';
+
+export { PostmanParser, OpenApiParser, ParserFactory };

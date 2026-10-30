@@ -3,5 +3,7 @@
  * Exports all utility functions
  */
 
-export { applyDelay, setupHotReload, validatePort, validateDelayRange, formatBytes, getFileSize } from './utils.js';
-export { FileReader } from './file-reader.js';
+import { applyDelay, setupHotReload, validatePort, validateDelayRange, formatBytes, getFileSize } from '../utils.js';
+import { FileReader } from './file-reader.js';
+
+export { applyDelay, setupHotReload, validatePort, validateDelayRange, formatBytes, getFileSize, FileReader };
